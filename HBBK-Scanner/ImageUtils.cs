@@ -18,7 +18,7 @@ namespace HBBK_Scanner
             return imagepaths;
         }
 
-
+        
 
         public static String getImageName(String path)
         {

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.Label_Wilkommen = new MonoFlat.Class1.MonoFlat_Label();
             this.Image_Directionary = new System.Windows.Forms.FolderBrowserDialog();
@@ -37,12 +38,15 @@
             this.Label_Pfad = new MonoFlat.Class1.MonoFlat_Label();
             this.Bilder_Anzeige = new System.Windows.Forms.FlowLayoutPanel();
             this.Tool_Panel = new System.Windows.Forms.Panel();
-            this.Image_Preview = new System.Windows.Forms.PictureBox();
-            this.Label_DName = new System.Windows.Forms.Label();
-            this.Label_BPfad = new System.Windows.Forms.Label();
-            this.Label_BBreite = new System.Windows.Forms.Label();
-            this.Label_BHöhe = new System.Windows.Forms.Label();
             this.Button_Bearbeiten = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.Label_BHöhe = new System.Windows.Forms.Label();
+            this.Label_BBreite = new System.Windows.Forms.Label();
+            this.Label_BPfad = new System.Windows.Forms.Label();
+            this.Label_DName = new System.Windows.Forms.Label();
+            this.Image_Preview = new System.Windows.Forms.PictureBox();
+            this.monoFlat_Label2 = new MonoFlat.Class1.MonoFlat_Label();
+            this.TB_Hidden = new System.Windows.Forms.TextBox();
+            this.timer_focus = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Tool_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Image_Preview)).BeginInit();
@@ -59,7 +63,7 @@
             this.Label_Wilkommen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(125)))), ((int)(((byte)(132)))));
             this.Label_Wilkommen.Location = new System.Drawing.Point(400, 307);
             this.Label_Wilkommen.Name = "Label_Wilkommen";
-            this.Label_Wilkommen.Size = new System.Drawing.Size(303, 50);
+            this.Label_Wilkommen.Size = new System.Drawing.Size(304, 50);
             this.Label_Wilkommen.TabIndex = 1;
             this.Label_Wilkommen.Text = "      Willkommen, bitte wähle \r\nein Verzeichnis mit deinen Bildern.\r\n";
             // 
@@ -149,6 +153,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Tool_Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Tool_Panel.Controls.Add(this.TB_Hidden);
+            this.Tool_Panel.Controls.Add(this.monoFlat_Label2);
             this.Tool_Panel.Controls.Add(this.Button_Bearbeiten);
             this.Tool_Panel.Controls.Add(this.Label_BHöhe);
             this.Tool_Panel.Controls.Add(this.Label_BBreite);
@@ -160,58 +166,6 @@
             this.Tool_Panel.Size = new System.Drawing.Size(901, 775);
             this.Tool_Panel.TabIndex = 9;
             this.Tool_Panel.Visible = false;
-            // 
-            // Image_Preview
-            // 
-            this.Image_Preview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Image_Preview.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.Image_Preview.Location = new System.Drawing.Point(0, 0);
-            this.Image_Preview.Name = "Image_Preview";
-            this.Image_Preview.Size = new System.Drawing.Size(495, 681);
-            this.Image_Preview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Image_Preview.TabIndex = 0;
-            this.Image_Preview.TabStop = false;
-            this.Image_Preview.Visible = false;
-            // 
-            // Label_DName
-            // 
-            this.Label_DName.AutoSize = true;
-            this.Label_DName.Font = new System.Drawing.Font("Segoe UI Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_DName.Location = new System.Drawing.Point(501, 14);
-            this.Label_DName.Name = "Label_DName";
-            this.Label_DName.Size = new System.Drawing.Size(161, 37);
-            this.Label_DName.TabIndex = 1;
-            this.Label_DName.Text = "Datei-Name:";
-            // 
-            // Label_BPfad
-            // 
-            this.Label_BPfad.AutoSize = true;
-            this.Label_BPfad.Font = new System.Drawing.Font("Segoe UI Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_BPfad.Location = new System.Drawing.Point(3, 711);
-            this.Label_BPfad.Name = "Label_BPfad";
-            this.Label_BPfad.Size = new System.Drawing.Size(73, 37);
-            this.Label_BPfad.TabIndex = 2;
-            this.Label_BPfad.Text = "Pfad:";
-            // 
-            // Label_BBreite
-            // 
-            this.Label_BBreite.AutoSize = true;
-            this.Label_BBreite.Font = new System.Drawing.Font("Segoe UI Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_BBreite.Location = new System.Drawing.Point(501, 169);
-            this.Label_BBreite.Name = "Label_BBreite";
-            this.Label_BBreite.Size = new System.Drawing.Size(141, 37);
-            this.Label_BBreite.TabIndex = 3;
-            this.Label_BBreite.Text = "Bild-Breite:";
-            // 
-            // Label_BHöhe
-            // 
-            this.Label_BHöhe.AutoSize = true;
-            this.Label_BHöhe.Font = new System.Drawing.Font("Segoe UI Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_BHöhe.Location = new System.Drawing.Point(501, 246);
-            this.Label_BHöhe.Name = "Label_BHöhe";
-            this.Label_BHöhe.Size = new System.Drawing.Size(137, 37);
-            this.Label_BHöhe.TabIndex = 4;
-            this.Label_BHöhe.Text = "Bild-Höhe:";
             // 
             // Button_Bearbeiten
             // 
@@ -231,12 +185,95 @@
             this.Button_Bearbeiten.IdleFillColor = System.Drawing.Color.SeaGreen;
             this.Button_Bearbeiten.IdleForecolor = System.Drawing.Color.Honeydew;
             this.Button_Bearbeiten.IdleLineColor = System.Drawing.Color.SeaGreen;
-            this.Button_Bearbeiten.Location = new System.Drawing.Point(510, 322);
+            this.Button_Bearbeiten.Location = new System.Drawing.Point(508, 325);
             this.Button_Bearbeiten.Margin = new System.Windows.Forms.Padding(5);
             this.Button_Bearbeiten.Name = "Button_Bearbeiten";
             this.Button_Bearbeiten.Size = new System.Drawing.Size(227, 66);
             this.Button_Bearbeiten.TabIndex = 10;
             this.Button_Bearbeiten.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Button_Bearbeiten.Click += new System.EventHandler(this.Button_Bearbeiten_Click);
+            // 
+            // Label_BHöhe
+            // 
+            this.Label_BHöhe.AutoSize = true;
+            this.Label_BHöhe.Font = new System.Drawing.Font("Segoe UI Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_BHöhe.Location = new System.Drawing.Point(501, 246);
+            this.Label_BHöhe.Name = "Label_BHöhe";
+            this.Label_BHöhe.Size = new System.Drawing.Size(137, 37);
+            this.Label_BHöhe.TabIndex = 4;
+            this.Label_BHöhe.Text = "Bild-Höhe:";
+            // 
+            // Label_BBreite
+            // 
+            this.Label_BBreite.AutoSize = true;
+            this.Label_BBreite.Font = new System.Drawing.Font("Segoe UI Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_BBreite.Location = new System.Drawing.Point(501, 169);
+            this.Label_BBreite.Name = "Label_BBreite";
+            this.Label_BBreite.Size = new System.Drawing.Size(142, 37);
+            this.Label_BBreite.TabIndex = 3;
+            this.Label_BBreite.Text = "Bild-Breite:";
+            // 
+            // Label_BPfad
+            // 
+            this.Label_BPfad.AutoSize = true;
+            this.Label_BPfad.Font = new System.Drawing.Font("Segoe UI Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_BPfad.Location = new System.Drawing.Point(3, 711);
+            this.Label_BPfad.Name = "Label_BPfad";
+            this.Label_BPfad.Size = new System.Drawing.Size(73, 37);
+            this.Label_BPfad.TabIndex = 2;
+            this.Label_BPfad.Text = "Pfad:";
+            // 
+            // Label_DName
+            // 
+            this.Label_DName.AutoSize = true;
+            this.Label_DName.Font = new System.Drawing.Font("Segoe UI Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_DName.Location = new System.Drawing.Point(501, 14);
+            this.Label_DName.Name = "Label_DName";
+            this.Label_DName.Size = new System.Drawing.Size(161, 37);
+            this.Label_DName.TabIndex = 1;
+            this.Label_DName.Text = "Datei-Name:";
+            // 
+            // Image_Preview
+            // 
+            this.Image_Preview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Image_Preview.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.Image_Preview.Location = new System.Drawing.Point(-1, -1);
+            this.Image_Preview.Name = "Image_Preview";
+            this.Image_Preview.Size = new System.Drawing.Size(495, 681);
+            this.Image_Preview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Image_Preview.TabIndex = 0;
+            this.Image_Preview.TabStop = false;
+            this.Image_Preview.Visible = false;
+            // 
+            // monoFlat_Label2
+            // 
+            this.monoFlat_Label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.monoFlat_Label2.AutoSize = true;
+            this.monoFlat_Label2.BackColor = System.Drawing.Color.Transparent;
+            this.monoFlat_Label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.monoFlat_Label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(125)))), ((int)(((byte)(132)))));
+            this.monoFlat_Label2.Location = new System.Drawing.Point(534, 474);
+            this.monoFlat_Label2.Name = "monoFlat_Label2";
+            this.monoFlat_Label2.Size = new System.Drawing.Size(351, 50);
+            this.monoFlat_Label2.TabIndex = 10;
+            this.monoFlat_Label2.Text = "       Scannen Sie jetzt den Barcode,\r\num das Bild unter seiner ID zu speichern";
+            // 
+            // TB_Hidden
+            // 
+            this.TB_Hidden.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.TB_Hidden.Location = new System.Drawing.Point(10, 688);
+            this.TB_Hidden.Name = "TB_Hidden";
+            this.TB_Hidden.Size = new System.Drawing.Size(286, 20);
+            this.TB_Hidden.TabIndex = 11;
+            this.TB_Hidden.TextChanged += new System.EventHandler(this.TB_Hidden_TextChanged);
+            // 
+            // timer_focus
+            // 
+            this.timer_focus.Enabled = true;
+            this.timer_focus.Interval = 10;
+            this.timer_focus.Tick += new System.EventHandler(this.timer_focus_Tick);
             // 
             // Main
             // 
@@ -254,6 +291,7 @@
             this.ShowIcon = false;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Main_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Main_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.Tool_Panel.ResumeLayout(false);
             this.Tool_Panel.PerformLayout();
@@ -278,6 +316,9 @@
         private System.Windows.Forms.Label Label_BBreite;
         private System.Windows.Forms.Label Label_BPfad;
         private Bunifu.Framework.UI.BunifuThinButton2 Button_Bearbeiten;
+        private MonoFlat.Class1.MonoFlat_Label monoFlat_Label2;
+        private System.Windows.Forms.TextBox TB_Hidden;
+        private System.Windows.Forms.Timer timer_focus;
     }
 }
 

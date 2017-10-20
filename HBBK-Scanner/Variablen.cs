@@ -10,6 +10,6 @@ namespace HBBK_Scanner
     {
         public static String path;
         public static String preview_image_path;
-
+        public static bool input;
     }
 }

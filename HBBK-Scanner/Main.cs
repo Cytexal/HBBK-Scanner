@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ namespace HBBK_Scanner
 {
     public partial class Main : System.Windows.Forms.Form
     {
+
         List<string> imagepaths = new List<string>();
         Dictionary<string, string> nametopath = new Dictionary<string, string>();
         Point path_Label;
@@ -22,6 +24,7 @@ namespace HBBK_Scanner
         public Main()
         {
             InitializeComponent();
+            Utils.input = true;
         }
 
         public void RefreshImages()
@@ -115,6 +118,49 @@ namespace HBBK_Scanner
             Image_Preview.Show();
             
 
+        }
+
+        private void Main_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //MessageBox.Show(e.KeyChar.ToString());
+        }
+
+        private void timer_focus_Tick(object sender, EventArgs e)
+        {
+            TB_Hidden.Select();
+        }
+
+        private void TB_Hidden_TextChanged(object sender, EventArgs e)
+        {
+            if (TB_Hidden.Text.Length == 1 && Utils.input)
+            {
+                Utils.input = false;
+                Timer t = new Timer();
+                t.Interval = 1000;
+                t.Tick += t_Tick;
+                t.Enabled = true;
+            }
+
+
+
+            try
+            {
+                int i = Convert.ToInt32(TB_Hidden.Text);
+            }
+            catch
+            {
+                TB_Hidden.Text = "";
+            }
+        }
+
+        private void t_Tick(object sender, EventArgs e)
+        {
+            ((Timer)sender).Enabled = false;
+        }
+
+        private void Button_Bearbeiten_Click(object sender, EventArgs e)
+        {
+          //  File.Copy(Utils.preview_image_path, @"");
         }
     }
 }
