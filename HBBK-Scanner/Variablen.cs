@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HBBK_Scanner
 {
-    class Utils
+    class Variablen
     {
         public static String path;
         public static String SavePath;

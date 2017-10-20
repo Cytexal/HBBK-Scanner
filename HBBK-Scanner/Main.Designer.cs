@@ -38,7 +38,7 @@
             this.Label_Verzeichnis = new MonoFlat.Class1.MonoFlat_Label();
             this.Bilder_Anzeige = new System.Windows.Forms.FlowLayoutPanel();
             this.Tool_Panel = new System.Windows.Forms.Panel();
-            this.TB_Hidden = new System.Windows.Forms.TextBox();
+            this.Button_Löschen = new Bunifu.Framework.UI.BunifuThinButton2();
             this.monoFlat_Label2 = new MonoFlat.Class1.MonoFlat_Label();
             this.Button_Bearbeiten = new Bunifu.Framework.UI.BunifuThinButton2();
             this.Label_BHöhe = new System.Windows.Forms.Label();
@@ -47,10 +47,11 @@
             this.Label_DName = new System.Windows.Forms.Label();
             this.Image_Preview = new System.Windows.Forms.PictureBox();
             this.timer_focus = new System.Windows.Forms.Timer(this.components);
-            this.Button_Löschen = new Bunifu.Framework.UI.BunifuThinButton2();
             this.Label_Speicherort = new MonoFlat.Class1.MonoFlat_Label();
             this.buttonChooseDirectory = new System.Windows.Forms.Button();
             this.buttonChooseSaveDirectory = new System.Windows.Forms.Button();
+            this.TextBox_Hidden = new System.Windows.Forms.TextBox();
+            this.folderBrowserDialogSaveDirectory = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Tool_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Image_Preview)).BeginInit();
@@ -157,8 +158,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Tool_Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Tool_Panel.Controls.Add(this.TextBox_Hidden);
             this.Tool_Panel.Controls.Add(this.Button_Löschen);
-            this.Tool_Panel.Controls.Add(this.TB_Hidden);
             this.Tool_Panel.Controls.Add(this.monoFlat_Label2);
             this.Tool_Panel.Controls.Add(this.Button_Bearbeiten);
             this.Tool_Panel.Controls.Add(this.Label_BHöhe);
@@ -172,14 +173,30 @@
             this.Tool_Panel.TabIndex = 9;
             this.Tool_Panel.Visible = false;
             // 
-            // TB_Hidden
+            // Button_Löschen
             // 
-            this.TB_Hidden.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.TB_Hidden.Location = new System.Drawing.Point(10, 688);
-            this.TB_Hidden.Name = "TB_Hidden";
-            this.TB_Hidden.Size = new System.Drawing.Size(286, 20);
-            this.TB_Hidden.TabIndex = 11;
-            this.TB_Hidden.TextChanged += new System.EventHandler(this.TB_Hidden_TextChanged);
+            this.Button_Löschen.ActiveBorderThickness = 1;
+            this.Button_Löschen.ActiveCornerRadius = 20;
+            this.Button_Löschen.ActiveFillColor = System.Drawing.Color.Honeydew;
+            this.Button_Löschen.ActiveForecolor = System.Drawing.Color.SeaGreen;
+            this.Button_Löschen.ActiveLineColor = System.Drawing.Color.SeaGreen;
+            this.Button_Löschen.BackColor = System.Drawing.SystemColors.Control;
+            this.Button_Löschen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Button_Löschen.BackgroundImage")));
+            this.Button_Löschen.ButtonText = "Bild aus dem Verzeichnis löschen";
+            this.Button_Löschen.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_Löschen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Button_Löschen.ForeColor = System.Drawing.Color.SeaGreen;
+            this.Button_Löschen.IdleBorderThickness = 1;
+            this.Button_Löschen.IdleCornerRadius = 20;
+            this.Button_Löschen.IdleFillColor = System.Drawing.Color.SeaGreen;
+            this.Button_Löschen.IdleForecolor = System.Drawing.Color.Honeydew;
+            this.Button_Löschen.IdleLineColor = System.Drawing.Color.SeaGreen;
+            this.Button_Löschen.Location = new System.Drawing.Point(508, 380);
+            this.Button_Löschen.Margin = new System.Windows.Forms.Padding(5);
+            this.Button_Löschen.Name = "Button_Löschen";
+            this.Button_Löschen.Size = new System.Drawing.Size(227, 66);
+            this.Button_Löschen.TabIndex = 12;
+            this.Button_Löschen.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // monoFlat_Label2
             // 
@@ -277,33 +294,8 @@
             // timer_focus
             // 
             this.timer_focus.Enabled = true;
-            this.timer_focus.Interval = 10;
+            this.timer_focus.Interval = 700;
             this.timer_focus.Tick += new System.EventHandler(this.timer_focus_Tick);
-            // 
-            // Button_Löschen
-            // 
-            this.Button_Löschen.ActiveBorderThickness = 1;
-            this.Button_Löschen.ActiveCornerRadius = 20;
-            this.Button_Löschen.ActiveFillColor = System.Drawing.Color.Honeydew;
-            this.Button_Löschen.ActiveForecolor = System.Drawing.Color.SeaGreen;
-            this.Button_Löschen.ActiveLineColor = System.Drawing.Color.SeaGreen;
-            this.Button_Löschen.BackColor = System.Drawing.SystemColors.Control;
-            this.Button_Löschen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Button_Löschen.BackgroundImage")));
-            this.Button_Löschen.ButtonText = "Bild aus dem Verzeichnis löschen";
-            this.Button_Löschen.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Button_Löschen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Button_Löschen.ForeColor = System.Drawing.Color.SeaGreen;
-            this.Button_Löschen.IdleBorderThickness = 1;
-            this.Button_Löschen.IdleCornerRadius = 20;
-            this.Button_Löschen.IdleFillColor = System.Drawing.Color.SeaGreen;
-            this.Button_Löschen.IdleForecolor = System.Drawing.Color.Honeydew;
-            this.Button_Löschen.IdleLineColor = System.Drawing.Color.SeaGreen;
-            this.Button_Löschen.Location = new System.Drawing.Point(508, 380);
-            this.Button_Löschen.Margin = new System.Windows.Forms.Padding(5);
-            this.Button_Löschen.Name = "Button_Löschen";
-            this.Button_Löschen.Size = new System.Drawing.Size(227, 66);
-            this.Button_Löschen.TabIndex = 12;
-            this.Button_Löschen.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Label_Speicherort
             // 
@@ -342,6 +334,18 @@
             this.buttonChooseSaveDirectory.UseVisualStyleBackColor = true;
             this.buttonChooseSaveDirectory.Visible = false;
             this.buttonChooseSaveDirectory.Click += new System.EventHandler(this.buttonChooseSaveDirectory_Click);
+            // 
+            // TextBox_Hidden
+            // 
+            this.TextBox_Hidden.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.TextBox_Hidden.Location = new System.Drawing.Point(10, 686);
+            this.TextBox_Hidden.Name = "TextBox_Hidden";
+            this.TextBox_Hidden.Size = new System.Drawing.Size(286, 20);
+            this.TextBox_Hidden.TabIndex = 13;
+            // 
+            // folderBrowserDialogSaveDirectory
+            // 
+            this.folderBrowserDialogSaveDirectory.Description = "Wählen Sie den Speicherort aus.";
             // 
             // Main
             // 
@@ -387,12 +391,13 @@
         private System.Windows.Forms.Label Label_BPfad;
         private Bunifu.Framework.UI.BunifuThinButton2 Button_Bearbeiten;
         private MonoFlat.Class1.MonoFlat_Label monoFlat_Label2;
-        private System.Windows.Forms.TextBox TB_Hidden;
         private System.Windows.Forms.Timer timer_focus;
         private Bunifu.Framework.UI.BunifuThinButton2 Button_Löschen;
         private MonoFlat.Class1.MonoFlat_Label Label_Speicherort;
         private System.Windows.Forms.Button buttonChooseDirectory;
         private System.Windows.Forms.Button buttonChooseSaveDirectory;
+        private System.Windows.Forms.TextBox TextBox_Hidden;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogSaveDirectory;
     }
 }
 

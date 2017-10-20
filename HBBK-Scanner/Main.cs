@@ -24,7 +24,7 @@ namespace HBBK_Scanner
         public Main()
         {
             InitializeComponent();
-            Utils.input = true;
+            Variablen.input = true;
         }
 
         public void RefreshImages()
@@ -32,7 +32,7 @@ namespace HBBK_Scanner
             imagepaths.Clear();
             try
             {
-                imagepaths = ImageUtils.getImagesinFolder(@"" + Utils.path);
+                imagepaths = ImageUtils.getImagesinFolder(@"" + Variablen.path);
 
 
             String firstpath = "";
@@ -67,10 +67,10 @@ namespace HBBK_Scanner
             }
 
 
-            Utils.preview_image_path = firstpath;
-            Double factor = Convert.ToDouble(Image.FromFile(Utils.preview_image_path).Width) / Image.FromFile(Utils.preview_image_path).Height;
+            Variablen.preview_image_path = firstpath;
+            Double factor = Convert.ToDouble(Image.FromFile(Variablen.preview_image_path).Width) / Image.FromFile(Variablen.preview_image_path).Height;
             Image_Preview.Size = new Size(Convert.ToInt32(Image_Preview.Height * factor), Image_Preview.Height);
-            Image_Preview.Image = Image.FromFile(Utils.preview_image_path);
+            Image_Preview.Image = Image.FromFile(Variablen.preview_image_path);
             Label_DName.Location = new Point(Image_Preview.Size.Width, Label_DName.Location.Y);
             Label_BBreite.Location = new Point(Image_Preview.Size.Width, Label_BBreite.Location.Y);
             Label_BHöhe.Location = new Point(Image_Preview.Size.Width, Label_BHöhe.Location.Y);
@@ -90,10 +90,10 @@ namespace HBBK_Scanner
 
         private void Image_Click(object sender, EventArgs e)
         {
-            Utils.preview_image_path = nametopath[((PictureBox)sender).Name];
-            Double factor = Convert.ToDouble(Image.FromFile(Utils.preview_image_path).Width) / Image.FromFile(Utils.preview_image_path).Height;
+            Variablen.preview_image_path = nametopath[((PictureBox)sender).Name];
+            Double factor = Convert.ToDouble(Image.FromFile(Variablen.preview_image_path).Width) / Image.FromFile(Variablen.preview_image_path).Height;
             Image_Preview.Size = new Size(Convert.ToInt32(Image_Preview.Height * factor), Image_Preview.Height);
-            Image_Preview.Image = Image.FromFile(Utils.preview_image_path);
+            Image_Preview.Image = Image.FromFile(Variablen.preview_image_path);
             Label_DName.Location = new Point(Image_Preview.Size.Width, Label_DName.Location.Y);
             Label_BBreite.Location = new Point(Image_Preview.Size.Width, Label_BBreite.Location.Y);
             Label_BHöhe.Location = new Point(Image_Preview.Size.Width, Label_BHöhe.Location.Y);
@@ -115,10 +115,10 @@ namespace HBBK_Scanner
         private void Button_Directory_Click(object sender, EventArgs e)
         {
             Image_Directionary.ShowDialog();
-            Utils.path = Image_Directionary.SelectedPath;
+            Variablen.path = Image_Directionary.SelectedPath;
             Label_Willkommen.Hide();
 
-            Label_Verzeichnis.Text = "Verzeichnis: " + Utils.path;
+            Label_Verzeichnis.Text = "Verzeichnis: " + Variablen.path;
             Label_Verzeichnis.Location = new Point(path_Label.X - Label_Verzeichnis.Size.Width, Label_Verzeichnis.Location.Y);
             Label_Verzeichnis.Show();
 
@@ -144,14 +144,14 @@ namespace HBBK_Scanner
 
         private void timer_focus_Tick(object sender, EventArgs e)
         {
-            //TB_Hidden.Select();           FEHLER
+            TextBox_Hidden.Select();
         }
 
         private void TB_Hidden_TextChanged(object sender, EventArgs e)
         {
-            if (TB_Hidden.Text.Length == 1 && Utils.input)
+            if (TextBox_Hidden.Text.Length == 1 && Variablen.input)
             {
-                Utils.input = false;
+                Variablen.input = false;
                 Timer t = new Timer();
                 t.Interval = 1000;
                 t.Tick += t_Tick;
@@ -162,29 +162,31 @@ namespace HBBK_Scanner
 
             try
             {
-                int i = Convert.ToInt32(TB_Hidden.Text);
+                int i = Convert.ToInt32(TextBox_Hidden.Text);
             }
             catch
             {
-                TB_Hidden.Text = "";
+                TextBox_Hidden.Text = "";
             }
         }
 
         private void t_Tick(object sender, EventArgs e)
         {
             ((Timer)sender).Enabled = false;
+            Image.FromFile(Variablen.path).Save(Variablen.SavePath + @"\" + TextBox_Hidden.Text + ".jpg");
+            TextBox_Hidden.Text = "";
         }
 
         private void Button_Bearbeiten_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("h");
         }
 
         private void buttonChooseSaveDirectory_Click(object sender, EventArgs e)
         {
-            Image_Directionary.ShowDialog();
-            Utils.SavePath = Image_Directionary.SelectedPath;
-            MessageBox.Show(Utils.SavePath);
+            folderBrowserDialogSaveDirectory.ShowDialog();
+            Variablen.SavePath = folderBrowserDialogSaveDirectory.SelectedPath;
+            Label_Speicherort.Text = Variablen.SavePath + @"\";
+
         }
 
         private void buttonChooseDirectory_Click(object sender, EventArgs e)
