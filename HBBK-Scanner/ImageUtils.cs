@@ -10,12 +10,12 @@ namespace HBBK_Scanner
     {
         public static List<String> getImagesinFolder(String path)
         {
-            List<String> imagepaths = new List<string>();
-            imagepaths.AddRange(System.IO.Directory.GetFiles(@"" + path, "*.png", System.IO.SearchOption.AllDirectories).ToList());
-            imagepaths.AddRange(System.IO.Directory.GetFiles(@"" + path, "*.jpg", System.IO.SearchOption.AllDirectories).ToList());
-            imagepaths.AddRange(System.IO.Directory.GetFiles(@"" + path, "*.jpeg", System.IO.SearchOption.AllDirectories).ToList());
-            imagepaths.AddRange(System.IO.Directory.GetFiles(@"" + path, "*.gif", System.IO.SearchOption.AllDirectories).ToList());
-            return imagepaths;
+                List<String> imagepaths = new List<string>();
+                imagepaths.AddRange(System.IO.Directory.GetFiles(@"" + path, "*.png", System.IO.SearchOption.AllDirectories).ToList());
+                imagepaths.AddRange(System.IO.Directory.GetFiles(@"" + path, "*.jpg", System.IO.SearchOption.AllDirectories).ToList());
+                imagepaths.AddRange(System.IO.Directory.GetFiles(@"" + path, "*.jpeg", System.IO.SearchOption.AllDirectories).ToList());
+                imagepaths.AddRange(System.IO.Directory.GetFiles(@"" + path, "*.gif", System.IO.SearchOption.AllDirectories).ToList());
+                return imagepaths;
         }
 
         

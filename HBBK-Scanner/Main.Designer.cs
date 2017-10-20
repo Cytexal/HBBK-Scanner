@@ -30,46 +30,50 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            this.Label_Wilkommen = new MonoFlat.Class1.MonoFlat_Label();
+            this.Label_Willkommen = new MonoFlat.Class1.MonoFlat_Label();
             this.Image_Directionary = new System.Windows.Forms.FolderBrowserDialog();
             this.monoFlat_Label1 = new MonoFlat.Class1.MonoFlat_Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Button_Directory = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.Label_Pfad = new MonoFlat.Class1.MonoFlat_Label();
+            this.Label_Verzeichnis = new MonoFlat.Class1.MonoFlat_Label();
             this.Bilder_Anzeige = new System.Windows.Forms.FlowLayoutPanel();
             this.Tool_Panel = new System.Windows.Forms.Panel();
+            this.TB_Hidden = new System.Windows.Forms.TextBox();
+            this.monoFlat_Label2 = new MonoFlat.Class1.MonoFlat_Label();
             this.Button_Bearbeiten = new Bunifu.Framework.UI.BunifuThinButton2();
             this.Label_BHöhe = new System.Windows.Forms.Label();
             this.Label_BBreite = new System.Windows.Forms.Label();
             this.Label_BPfad = new System.Windows.Forms.Label();
             this.Label_DName = new System.Windows.Forms.Label();
             this.Image_Preview = new System.Windows.Forms.PictureBox();
-            this.monoFlat_Label2 = new MonoFlat.Class1.MonoFlat_Label();
-            this.TB_Hidden = new System.Windows.Forms.TextBox();
             this.timer_focus = new System.Windows.Forms.Timer(this.components);
+            this.Button_Löschen = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.Label_Speicherort = new MonoFlat.Class1.MonoFlat_Label();
+            this.buttonChooseDirectory = new System.Windows.Forms.Button();
+            this.buttonChooseSaveDirectory = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Tool_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Image_Preview)).BeginInit();
             this.SuspendLayout();
             // 
-            // Label_Wilkommen
+            // Label_Willkommen
             // 
-            this.Label_Wilkommen.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.Label_Willkommen.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Label_Wilkommen.AutoSize = true;
-            this.Label_Wilkommen.BackColor = System.Drawing.Color.Transparent;
-            this.Label_Wilkommen.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_Wilkommen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(125)))), ((int)(((byte)(132)))));
-            this.Label_Wilkommen.Location = new System.Drawing.Point(400, 307);
-            this.Label_Wilkommen.Name = "Label_Wilkommen";
-            this.Label_Wilkommen.Size = new System.Drawing.Size(304, 50);
-            this.Label_Wilkommen.TabIndex = 1;
-            this.Label_Wilkommen.Text = "      Willkommen, bitte wähle \r\nein Verzeichnis mit deinen Bildern.\r\n";
+            this.Label_Willkommen.AutoSize = true;
+            this.Label_Willkommen.BackColor = System.Drawing.Color.Transparent;
+            this.Label_Willkommen.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_Willkommen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(125)))), ((int)(((byte)(132)))));
+            this.Label_Willkommen.Location = new System.Drawing.Point(400, 307);
+            this.Label_Willkommen.Name = "Label_Willkommen";
+            this.Label_Willkommen.Size = new System.Drawing.Size(303, 50);
+            this.Label_Willkommen.TabIndex = 1;
+            this.Label_Willkommen.Text = "      Willkommen, bitte wähle \r\nein Verzeichnis mit deinen Bildern.\r\n";
             // 
             // Image_Directionary
             // 
-            this.Image_Directionary.Description = "Wähle ein Verzeichnis mit deinen Bildern";
+            this.Image_Directionary.Description = "Wählen Sie das Verzeichnis mit den Bildern.";
             // 
             // monoFlat_Label1
             // 
@@ -122,19 +126,19 @@
             this.Button_Directory.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Button_Directory.Click += new System.EventHandler(this.Button_Directory_Click);
             // 
-            // Label_Pfad
+            // Label_Verzeichnis
             // 
-            this.Label_Pfad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Label_Pfad.AutoSize = true;
-            this.Label_Pfad.BackColor = System.Drawing.Color.Transparent;
-            this.Label_Pfad.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_Pfad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(125)))), ((int)(((byte)(132)))));
-            this.Label_Pfad.Location = new System.Drawing.Point(1466, 9);
-            this.Label_Pfad.Name = "Label_Pfad";
-            this.Label_Pfad.Size = new System.Drawing.Size(44, 21);
-            this.Label_Pfad.TabIndex = 7;
-            this.Label_Pfad.Text = "Pfad:";
-            this.Label_Pfad.Visible = false;
+            this.Label_Verzeichnis.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Label_Verzeichnis.AutoSize = true;
+            this.Label_Verzeichnis.BackColor = System.Drawing.Color.Transparent;
+            this.Label_Verzeichnis.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_Verzeichnis.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(125)))), ((int)(((byte)(132)))));
+            this.Label_Verzeichnis.Location = new System.Drawing.Point(1466, 7);
+            this.Label_Verzeichnis.Name = "Label_Verzeichnis";
+            this.Label_Verzeichnis.Size = new System.Drawing.Size(91, 21);
+            this.Label_Verzeichnis.TabIndex = 7;
+            this.Label_Verzeichnis.Text = "Verzeichnis:";
+            this.Label_Verzeichnis.Visible = false;
             // 
             // Bilder_Anzeige
             // 
@@ -153,6 +157,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Tool_Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Tool_Panel.Controls.Add(this.Button_Löschen);
             this.Tool_Panel.Controls.Add(this.TB_Hidden);
             this.Tool_Panel.Controls.Add(this.monoFlat_Label2);
             this.Tool_Panel.Controls.Add(this.Button_Bearbeiten);
@@ -166,6 +171,30 @@
             this.Tool_Panel.Size = new System.Drawing.Size(901, 775);
             this.Tool_Panel.TabIndex = 9;
             this.Tool_Panel.Visible = false;
+            // 
+            // TB_Hidden
+            // 
+            this.TB_Hidden.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.TB_Hidden.Location = new System.Drawing.Point(10, 688);
+            this.TB_Hidden.Name = "TB_Hidden";
+            this.TB_Hidden.Size = new System.Drawing.Size(286, 20);
+            this.TB_Hidden.TabIndex = 11;
+            this.TB_Hidden.TextChanged += new System.EventHandler(this.TB_Hidden_TextChanged);
+            // 
+            // monoFlat_Label2
+            // 
+            this.monoFlat_Label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.monoFlat_Label2.AutoSize = true;
+            this.monoFlat_Label2.BackColor = System.Drawing.Color.Transparent;
+            this.monoFlat_Label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.monoFlat_Label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(125)))), ((int)(((byte)(132)))));
+            this.monoFlat_Label2.Location = new System.Drawing.Point(534, 474);
+            this.monoFlat_Label2.Name = "monoFlat_Label2";
+            this.monoFlat_Label2.Size = new System.Drawing.Size(351, 50);
+            this.monoFlat_Label2.TabIndex = 10;
+            this.monoFlat_Label2.Text = "       Scannen Sie jetzt den Barcode,\r\num das Bild unter seiner ID zu speichern";
             // 
             // Button_Bearbeiten
             // 
@@ -185,7 +214,7 @@
             this.Button_Bearbeiten.IdleFillColor = System.Drawing.Color.SeaGreen;
             this.Button_Bearbeiten.IdleForecolor = System.Drawing.Color.Honeydew;
             this.Button_Bearbeiten.IdleLineColor = System.Drawing.Color.SeaGreen;
-            this.Button_Bearbeiten.Location = new System.Drawing.Point(508, 325);
+            this.Button_Bearbeiten.Location = new System.Drawing.Point(508, 316);
             this.Button_Bearbeiten.Margin = new System.Windows.Forms.Padding(5);
             this.Button_Bearbeiten.Name = "Button_Bearbeiten";
             this.Button_Bearbeiten.Size = new System.Drawing.Size(227, 66);
@@ -197,7 +226,7 @@
             // 
             this.Label_BHöhe.AutoSize = true;
             this.Label_BHöhe.Font = new System.Drawing.Font("Segoe UI Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_BHöhe.Location = new System.Drawing.Point(501, 246);
+            this.Label_BHöhe.Location = new System.Drawing.Point(501, 234);
             this.Label_BHöhe.Name = "Label_BHöhe";
             this.Label_BHöhe.Size = new System.Drawing.Size(137, 37);
             this.Label_BHöhe.TabIndex = 4;
@@ -209,7 +238,7 @@
             this.Label_BBreite.Font = new System.Drawing.Font("Segoe UI Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label_BBreite.Location = new System.Drawing.Point(501, 169);
             this.Label_BBreite.Name = "Label_BBreite";
-            this.Label_BBreite.Size = new System.Drawing.Size(142, 37);
+            this.Label_BBreite.Size = new System.Drawing.Size(141, 37);
             this.Label_BBreite.TabIndex = 3;
             this.Label_BBreite.Text = "Bild-Breite:";
             // 
@@ -245,53 +274,94 @@
             this.Image_Preview.TabStop = false;
             this.Image_Preview.Visible = false;
             // 
-            // monoFlat_Label2
-            // 
-            this.monoFlat_Label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.monoFlat_Label2.AutoSize = true;
-            this.monoFlat_Label2.BackColor = System.Drawing.Color.Transparent;
-            this.monoFlat_Label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.monoFlat_Label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(125)))), ((int)(((byte)(132)))));
-            this.monoFlat_Label2.Location = new System.Drawing.Point(534, 474);
-            this.monoFlat_Label2.Name = "monoFlat_Label2";
-            this.monoFlat_Label2.Size = new System.Drawing.Size(351, 50);
-            this.monoFlat_Label2.TabIndex = 10;
-            this.monoFlat_Label2.Text = "       Scannen Sie jetzt den Barcode,\r\num das Bild unter seiner ID zu speichern";
-            // 
-            // TB_Hidden
-            // 
-            this.TB_Hidden.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.TB_Hidden.Location = new System.Drawing.Point(10, 688);
-            this.TB_Hidden.Name = "TB_Hidden";
-            this.TB_Hidden.Size = new System.Drawing.Size(286, 20);
-            this.TB_Hidden.TabIndex = 11;
-            this.TB_Hidden.TextChanged += new System.EventHandler(this.TB_Hidden_TextChanged);
-            // 
             // timer_focus
             // 
             this.timer_focus.Enabled = true;
             this.timer_focus.Interval = 10;
             this.timer_focus.Tick += new System.EventHandler(this.timer_focus_Tick);
             // 
+            // Button_Löschen
+            // 
+            this.Button_Löschen.ActiveBorderThickness = 1;
+            this.Button_Löschen.ActiveCornerRadius = 20;
+            this.Button_Löschen.ActiveFillColor = System.Drawing.Color.Honeydew;
+            this.Button_Löschen.ActiveForecolor = System.Drawing.Color.SeaGreen;
+            this.Button_Löschen.ActiveLineColor = System.Drawing.Color.SeaGreen;
+            this.Button_Löschen.BackColor = System.Drawing.SystemColors.Control;
+            this.Button_Löschen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Button_Löschen.BackgroundImage")));
+            this.Button_Löschen.ButtonText = "Bild aus dem Verzeichnis löschen";
+            this.Button_Löschen.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_Löschen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Button_Löschen.ForeColor = System.Drawing.Color.SeaGreen;
+            this.Button_Löschen.IdleBorderThickness = 1;
+            this.Button_Löschen.IdleCornerRadius = 20;
+            this.Button_Löschen.IdleFillColor = System.Drawing.Color.SeaGreen;
+            this.Button_Löschen.IdleForecolor = System.Drawing.Color.Honeydew;
+            this.Button_Löschen.IdleLineColor = System.Drawing.Color.SeaGreen;
+            this.Button_Löschen.Location = new System.Drawing.Point(508, 380);
+            this.Button_Löschen.Margin = new System.Windows.Forms.Padding(5);
+            this.Button_Löschen.Name = "Button_Löschen";
+            this.Button_Löschen.Size = new System.Drawing.Size(227, 66);
+            this.Button_Löschen.TabIndex = 12;
+            this.Button_Löschen.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Label_Speicherort
+            // 
+            this.Label_Speicherort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Label_Speicherort.AutoSize = true;
+            this.Label_Speicherort.BackColor = System.Drawing.Color.Transparent;
+            this.Label_Speicherort.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_Speicherort.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(125)))), ((int)(((byte)(132)))));
+            this.Label_Speicherort.Location = new System.Drawing.Point(1466, 33);
+            this.Label_Speicherort.Name = "Label_Speicherort";
+            this.Label_Speicherort.Size = new System.Drawing.Size(93, 21);
+            this.Label_Speicherort.TabIndex = 10;
+            this.Label_Speicherort.Text = "Speicherort:";
+            this.Label_Speicherort.Visible = false;
+            // 
+            // buttonChooseDirectory
+            // 
+            this.buttonChooseDirectory.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonChooseDirectory.Location = new System.Drawing.Point(1335, 8);
+            this.buttonChooseDirectory.Name = "buttonChooseDirectory";
+            this.buttonChooseDirectory.Size = new System.Drawing.Size(126, 23);
+            this.buttonChooseDirectory.TabIndex = 11;
+            this.buttonChooseDirectory.Text = "Verzeichnis wählen";
+            this.buttonChooseDirectory.UseVisualStyleBackColor = true;
+            this.buttonChooseDirectory.Visible = false;
+            this.buttonChooseDirectory.Click += new System.EventHandler(this.buttonChooseDirectory_Click);
+            // 
+            // buttonChooseSaveDirectory
+            // 
+            this.buttonChooseSaveDirectory.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonChooseSaveDirectory.Location = new System.Drawing.Point(1335, 34);
+            this.buttonChooseSaveDirectory.Name = "buttonChooseSaveDirectory";
+            this.buttonChooseSaveDirectory.Size = new System.Drawing.Size(126, 23);
+            this.buttonChooseSaveDirectory.TabIndex = 12;
+            this.buttonChooseSaveDirectory.Text = "Speicherort wählen";
+            this.buttonChooseSaveDirectory.UseVisualStyleBackColor = true;
+            this.buttonChooseSaveDirectory.Visible = false;
+            this.buttonChooseSaveDirectory.Click += new System.EventHandler(this.buttonChooseSaveDirectory_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1473, 878);
+            this.Controls.Add(this.buttonChooseSaveDirectory);
+            this.Controls.Add(this.buttonChooseDirectory);
+            this.Controls.Add(this.Label_Speicherort);
             this.Controls.Add(this.Tool_Panel);
             this.Controls.Add(this.Bilder_Anzeige);
-            this.Controls.Add(this.Label_Pfad);
+            this.Controls.Add(this.Label_Verzeichnis);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.monoFlat_Label1);
             this.Controls.Add(this.Button_Directory);
-            this.Controls.Add(this.Label_Wilkommen);
+            this.Controls.Add(this.Label_Willkommen);
             this.Name = "Main";
             this.ShowIcon = false;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Main_Load);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Main_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.Tool_Panel.ResumeLayout(false);
             this.Tool_Panel.PerformLayout();
@@ -302,12 +372,12 @@
         }
 
         #endregion
-        private MonoFlat.Class1.MonoFlat_Label Label_Wilkommen;
+        private MonoFlat.Class1.MonoFlat_Label Label_Willkommen;
         private Bunifu.Framework.UI.BunifuThinButton2 Button_Directory;
         private System.Windows.Forms.FolderBrowserDialog Image_Directionary;
         private MonoFlat.Class1.MonoFlat_Label monoFlat_Label1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private MonoFlat.Class1.MonoFlat_Label Label_Pfad;
+        private MonoFlat.Class1.MonoFlat_Label Label_Verzeichnis;
         private System.Windows.Forms.FlowLayoutPanel Bilder_Anzeige;
         private System.Windows.Forms.Panel Tool_Panel;
         private System.Windows.Forms.PictureBox Image_Preview;
@@ -319,6 +389,10 @@
         private MonoFlat.Class1.MonoFlat_Label monoFlat_Label2;
         private System.Windows.Forms.TextBox TB_Hidden;
         private System.Windows.Forms.Timer timer_focus;
+        private Bunifu.Framework.UI.BunifuThinButton2 Button_Löschen;
+        private MonoFlat.Class1.MonoFlat_Label Label_Speicherort;
+        private System.Windows.Forms.Button buttonChooseDirectory;
+        private System.Windows.Forms.Button buttonChooseSaveDirectory;
     }
 }
 
