@@ -323,6 +323,7 @@
             // 
             // buttonChooseDirectory
             // 
+            this.buttonChooseDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonChooseDirectory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonChooseDirectory.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonChooseDirectory.Location = new System.Drawing.Point(1335, 8);
@@ -336,6 +337,7 @@
             // 
             // buttonChooseSaveDirectory
             // 
+            this.buttonChooseSaveDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonChooseSaveDirectory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonChooseSaveDirectory.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonChooseSaveDirectory.Location = new System.Drawing.Point(1335, 34);
@@ -392,6 +394,7 @@
             this.ShowIcon = false;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Main_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Main_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.Tool_Panel.ResumeLayout(false);
             this.Tool_Panel.PerformLayout();

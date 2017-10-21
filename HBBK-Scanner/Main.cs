@@ -175,6 +175,7 @@ namespace HBBK_Scanner
             Label_Verzeichnis.Text = "Verzeichnis: " + Variablen.path + @"\";
             Label_Verzeichnis.Location = new Point(path_Label.X - Label_Verzeichnis.Size.Width, Label_Verzeichnis.Location.Y);
             buttonChooseDirectory.Location = new Point(Label_Verzeichnis.Location.X - buttonChooseDirectory.Width -10, buttonChooseDirectory.Location.Y);
+            RefreshImages();
         }
 
         private void TextBox_Hidden_KeyPress(object sender, KeyPressEventArgs e)
@@ -186,7 +187,7 @@ namespace HBBK_Scanner
         private void timerSave_Tick(object sender, EventArgs e)
         {
             timerSave.Enabled = false;
-            //Save
+            //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++Save
             if (Variablen.SavePath != null)
             {
                 try
@@ -194,8 +195,26 @@ namespace HBBK_Scanner
                     Image img = Image.FromFile(Variablen.preview_image_path);
                     Bitmap bmp = new Bitmap(img, 100, 150);
                     img = bmp;
-                    img.Save(Variablen.SavePath + @"\" + TextBoxID.Text + ".jpg");
+                    if (!File.Exists(Variablen.SavePath + @"\" + TextBoxID.Text + ".jpg"))
+                    {
+                        img.Save(Variablen.SavePath + @"\" + TextBoxID.Text + ".jpg");
+                        
+                    }
+                    else
+                    {
+                        DialogResult dialogResult = MessageBox.Show("Im ausgewählten Verzeichnis befindet sich bereits eine Datei mit der selben ID. " +
+                            "Möchten sie die Datei überschreiben? ","Duplikat gefunden",MessageBoxButtons.YesNo);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            img.Save(Variablen.SavePath + @"\" + TextBoxID.Text + ".jpg");
+                        }
+                        else if (dialogResult == DialogResult.No)
+                        {
+                            
+                        }
+                    }
                     TextBoxID.Text = "";
+
 
                 }
                 catch
@@ -214,6 +233,11 @@ namespace HBBK_Scanner
         {
             timerSave.Enabled = false;
             timerSave.Enabled = true;
+        }
+
+        private void Main_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MessageBox.Show(e.KeyChar.ToString());
         }
     }
 }
