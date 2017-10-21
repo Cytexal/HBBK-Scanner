@@ -38,6 +38,7 @@
             this.Label_Verzeichnis = new MonoFlat.Class1.MonoFlat_Label();
             this.Bilder_Anzeige = new System.Windows.Forms.FlowLayoutPanel();
             this.Tool_Panel = new System.Windows.Forms.Panel();
+            this.TextBox_Hidden = new System.Windows.Forms.TextBox();
             this.Button_Löschen = new Bunifu.Framework.UI.BunifuThinButton2();
             this.monoFlat_Label2 = new MonoFlat.Class1.MonoFlat_Label();
             this.Button_Bearbeiten = new Bunifu.Framework.UI.BunifuThinButton2();
@@ -50,7 +51,6 @@
             this.Label_Speicherort = new MonoFlat.Class1.MonoFlat_Label();
             this.buttonChooseDirectory = new System.Windows.Forms.Button();
             this.buttonChooseSaveDirectory = new System.Windows.Forms.Button();
-            this.TextBox_Hidden = new System.Windows.Forms.TextBox();
             this.folderBrowserDialogSaveDirectory = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Tool_Panel.SuspendLayout();
@@ -173,6 +173,14 @@
             this.Tool_Panel.TabIndex = 9;
             this.Tool_Panel.Visible = false;
             // 
+            // TextBox_Hidden
+            // 
+            this.TextBox_Hidden.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.TextBox_Hidden.Location = new System.Drawing.Point(10, 686);
+            this.TextBox_Hidden.Name = "TextBox_Hidden";
+            this.TextBox_Hidden.Size = new System.Drawing.Size(286, 20);
+            this.TextBox_Hidden.TabIndex = 13;
+            // 
             // Button_Löschen
             // 
             this.Button_Löschen.ActiveBorderThickness = 1;
@@ -294,7 +302,7 @@
             // timer_focus
             // 
             this.timer_focus.Enabled = true;
-            this.timer_focus.Interval = 700;
+            this.timer_focus.Interval = 1000;
             this.timer_focus.Tick += new System.EventHandler(this.timer_focus_Tick);
             // 
             // Label_Speicherort
@@ -313,6 +321,7 @@
             // 
             // buttonChooseDirectory
             // 
+            this.buttonChooseDirectory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonChooseDirectory.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonChooseDirectory.Location = new System.Drawing.Point(1335, 8);
             this.buttonChooseDirectory.Name = "buttonChooseDirectory";
@@ -325,6 +334,7 @@
             // 
             // buttonChooseSaveDirectory
             // 
+            this.buttonChooseSaveDirectory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonChooseSaveDirectory.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonChooseSaveDirectory.Location = new System.Drawing.Point(1335, 34);
             this.buttonChooseSaveDirectory.Name = "buttonChooseSaveDirectory";
@@ -334,14 +344,6 @@
             this.buttonChooseSaveDirectory.UseVisualStyleBackColor = true;
             this.buttonChooseSaveDirectory.Visible = false;
             this.buttonChooseSaveDirectory.Click += new System.EventHandler(this.buttonChooseSaveDirectory_Click);
-            // 
-            // TextBox_Hidden
-            // 
-            this.TextBox_Hidden.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.TextBox_Hidden.Location = new System.Drawing.Point(10, 686);
-            this.TextBox_Hidden.Name = "TextBox_Hidden";
-            this.TextBox_Hidden.Size = new System.Drawing.Size(286, 20);
-            this.TextBox_Hidden.TabIndex = 13;
             // 
             // folderBrowserDialogSaveDirectory
             // 

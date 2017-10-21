@@ -185,13 +185,19 @@ namespace HBBK_Scanner
         {
             folderBrowserDialogSaveDirectory.ShowDialog();
             Variablen.SavePath = folderBrowserDialogSaveDirectory.SelectedPath;
-            Label_Speicherort.Text = Variablen.SavePath + @"\";
+            Label_Speicherort.Text = "Verzeichnis: " + Variablen.SavePath + @"\";
+            Label_Speicherort.Location = new Point(path_Label.X - Label_Speicherort.Size.Width, Label_Speicherort.Location.Y);
+            buttonChooseSaveDirectory.Location = new Point(Label_Speicherort.Location.X - buttonChooseSaveDirectory.Width - 10, buttonChooseSaveDirectory.Location.Y);
 
         }
 
         private void buttonChooseDirectory_Click(object sender, EventArgs e)
         {
             Image_Directionary.ShowDialog();
+            Variablen.path = Image_Directionary.SelectedPath;
+            Label_Verzeichnis.Text = "Verzeichnis: " + Variablen.path + @"\";
+            Label_Verzeichnis.Location = new Point(path_Label.X - Label_Verzeichnis.Size.Width, Label_Verzeichnis.Location.Y);
+            buttonChooseDirectory.Location = new Point(Label_Verzeichnis.Location.X - buttonChooseDirectory.Width -10, buttonChooseDirectory.Location.Y);
         }
     }
 }
