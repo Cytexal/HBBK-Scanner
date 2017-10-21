@@ -56,7 +56,7 @@ namespace HBBK_Scanner
                         image.Width = 125;
                         image.Height = 175;
                         image.SizeMode = PictureBoxSizeMode.StretchImage;
-                        image.Name = "" + ImageUtils.getImageName(path);
+                        image.Name = ImageUtils.getImageName(path);
                         image.Visible = true;
                         image.Image = Image.FromFile(path);
                         image.Click += Image_Click;
@@ -83,7 +83,7 @@ namespace HBBK_Scanner
             }
             catch
             {
-                MessageBox.Show("Fehler: Dialog geschlossen"); //MUSS NOCH NE ALTERNATIVE PROGRAMIERT WERDEN 
+                MessageBox.Show("Fehler: Dialog geschlossen"); //MUSS NOCH NE ALTERNATIVE PROGRAMMIERT WERDEN 
             }
 
         }
@@ -176,6 +176,7 @@ namespace HBBK_Scanner
             Label_Verzeichnis.Location = new Point(path_Label.X - Label_Verzeichnis.Size.Width, Label_Verzeichnis.Location.Y);
             buttonChooseDirectory.Location = new Point(Label_Verzeichnis.Location.X - buttonChooseDirectory.Width -10, buttonChooseDirectory.Location.Y);
             RefreshImages();
+            
         }
 
         private void TextBox_Hidden_KeyPress(object sender, KeyPressEventArgs e)
@@ -184,6 +185,16 @@ namespace HBBK_Scanner
             timerSave.Enabled = true;
             e.Handled = true;
         }
+
+        private Control GetControlByName(string Name)
+        {
+            foreach (Control c in this.Controls)
+                if (c.Name == Name)
+                    return c;
+
+            return null;
+        }
+
         private void timerSave_Tick(object sender, EventArgs e)
         {
             timerSave.Enabled = false;
@@ -198,7 +209,7 @@ namespace HBBK_Scanner
                     if (!File.Exists(Variablen.SavePath + @"\" + TextBoxID.Text + ".jpg"))
                     {
                         img.Save(Variablen.SavePath + @"\" + TextBoxID.Text + ".jpg");
-                        
+                        //Bilder_Anzeige.Controls.Remove(GetControlByName(Variablen.preview_image_path));
                     }
                     else
                     {
@@ -219,7 +230,7 @@ namespace HBBK_Scanner
                 }
                 catch
                 {
-
+                    
                 }
             }
             else
@@ -238,6 +249,11 @@ namespace HBBK_Scanner
         private void Main_KeyPress(object sender, KeyPressEventArgs e)
         {
             MessageBox.Show(e.KeyChar.ToString());
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(GetControlByName(Variablen.preview_image_path).ToString()); //test
         }
     }
 }
