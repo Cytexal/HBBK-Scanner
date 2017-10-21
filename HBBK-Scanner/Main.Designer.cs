@@ -38,7 +38,6 @@
             this.Label_Verzeichnis = new MonoFlat.Class1.MonoFlat_Label();
             this.Bilder_Anzeige = new System.Windows.Forms.FlowLayoutPanel();
             this.Tool_Panel = new System.Windows.Forms.Panel();
-            this.TextBox_Hidden = new System.Windows.Forms.TextBox();
             this.Button_Löschen = new Bunifu.Framework.UI.BunifuThinButton2();
             this.monoFlat_Label2 = new MonoFlat.Class1.MonoFlat_Label();
             this.Button_Bearbeiten = new Bunifu.Framework.UI.BunifuThinButton2();
@@ -52,6 +51,8 @@
             this.buttonChooseDirectory = new System.Windows.Forms.Button();
             this.buttonChooseSaveDirectory = new System.Windows.Forms.Button();
             this.folderBrowserDialogSaveDirectory = new System.Windows.Forms.FolderBrowserDialog();
+            this.timerSave = new System.Windows.Forms.Timer(this.components);
+            this.TextBoxID = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Tool_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Image_Preview)).BeginInit();
@@ -158,7 +159,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Tool_Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Tool_Panel.Controls.Add(this.TextBox_Hidden);
+            this.Tool_Panel.Controls.Add(this.TextBoxID);
             this.Tool_Panel.Controls.Add(this.Button_Löschen);
             this.Tool_Panel.Controls.Add(this.monoFlat_Label2);
             this.Tool_Panel.Controls.Add(this.Button_Bearbeiten);
@@ -172,14 +173,6 @@
             this.Tool_Panel.Size = new System.Drawing.Size(901, 775);
             this.Tool_Panel.TabIndex = 9;
             this.Tool_Panel.Visible = false;
-            // 
-            // TextBox_Hidden
-            // 
-            this.TextBox_Hidden.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.TextBox_Hidden.Location = new System.Drawing.Point(10, 686);
-            this.TextBox_Hidden.Name = "TextBox_Hidden";
-            this.TextBox_Hidden.Size = new System.Drawing.Size(286, 20);
-            this.TextBox_Hidden.TabIndex = 13;
             // 
             // Button_Löschen
             // 
@@ -349,6 +342,19 @@
             // 
             this.folderBrowserDialogSaveDirectory.Description = "Wählen Sie den Speicherort aus.";
             // 
+            // timerSave
+            // 
+            this.timerSave.Interval = 50;
+            this.timerSave.Tick += new System.EventHandler(this.timerSave_Tick);
+            // 
+            // TextBoxID
+            // 
+            this.TextBoxID.Location = new System.Drawing.Point(10, 688);
+            this.TextBoxID.Name = "TextBoxID";
+            this.TextBoxID.Size = new System.Drawing.Size(286, 20);
+            this.TextBoxID.TabIndex = 14;
+            this.TextBoxID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxID_KeyPress);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -398,8 +404,9 @@
         private MonoFlat.Class1.MonoFlat_Label Label_Speicherort;
         private System.Windows.Forms.Button buttonChooseDirectory;
         private System.Windows.Forms.Button buttonChooseSaveDirectory;
-        private System.Windows.Forms.TextBox TextBox_Hidden;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogSaveDirectory;
+        private System.Windows.Forms.Timer timerSave;
+        private System.Windows.Forms.TextBox TextBoxID;
     }
 }
 

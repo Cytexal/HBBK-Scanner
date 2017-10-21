@@ -144,37 +144,11 @@ namespace HBBK_Scanner
 
         private void timer_focus_Tick(object sender, EventArgs e)
         {
-            TextBox_Hidden.Select();
+            TextBoxID.Select();
         }
 
         private void TB_Hidden_TextChanged(object sender, EventArgs e)
         {
-            if (TextBox_Hidden.Text.Length == 1 && Variablen.input)
-            {
-                Variablen.input = false;
-                Timer t = new Timer();
-                t.Interval = 1000;
-                t.Tick += t_Tick;
-                t.Enabled = true;
-            }
-
-
-
-            try
-            {
-                int i = Convert.ToInt32(TextBox_Hidden.Text);
-            }
-            catch
-            {
-                TextBox_Hidden.Text = "";
-            }
-        }
-
-        private void t_Tick(object sender, EventArgs e)
-        {
-            ((Timer)sender).Enabled = false;
-            Image.FromFile(Variablen.path).Save(Variablen.SavePath + @"\" + TextBox_Hidden.Text + ".jpg");
-            TextBox_Hidden.Text = "";
         }
 
         private void Button_Bearbeiten_Click(object sender, EventArgs e)
@@ -198,6 +172,45 @@ namespace HBBK_Scanner
             Label_Verzeichnis.Text = "Verzeichnis: " + Variablen.path + @"\";
             Label_Verzeichnis.Location = new Point(path_Label.X - Label_Verzeichnis.Size.Width, Label_Verzeichnis.Location.Y);
             buttonChooseDirectory.Location = new Point(Label_Verzeichnis.Location.X - buttonChooseDirectory.Width -10, buttonChooseDirectory.Location.Y);
+        }
+
+        private void TextBox_Hidden_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            timerSave.Enabled = false;
+            timerSave.Enabled = true;
+            e.Handled = true;
+        }
+        private void timerSave_Tick(object sender, EventArgs e)
+        {
+            timerSave.Enabled = false;
+            //Save
+            if (Variablen.SavePath != null)
+            {
+                try
+                {
+                    Image img = Image.FromFile(Variablen.preview_image_path);
+                    Bitmap bmp = new Bitmap(img, 100, 150);
+                    img = bmp;
+                    img.Save(Variablen.SavePath + @"\" + TextBoxID.Text + ".jpg");
+                    TextBoxID.Text = "";
+
+                }
+                catch
+                {
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("Savepath = null");
+                TextBoxID.Text = "";
+            }          
+        }
+
+        private void TextBoxID_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            timerSave.Enabled = false;
+            timerSave.Enabled = true;
         }
     }
 }
