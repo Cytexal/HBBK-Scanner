@@ -132,6 +132,9 @@ namespace HBBK_Scanner
             buttonChooseSaveDirectory.Location = new Point(Label_Speicherort.Location.X - buttonChooseSaveDirectory.Size.Width - 5, buttonChooseSaveDirectory.Location.Y);
             buttonChooseSaveDirectory.Show();
 
+            Label_noDirectory.Location = new Point(path_Label.X - Label_noDirectory.Size.Width, Label_noDirectory.Location.Y);
+            Label_noDirectory.Show();
+
 
             Bilder_Anzeige.Show();
             Button_Directory.Hide();
@@ -162,7 +165,7 @@ namespace HBBK_Scanner
             Label_Speicherort.Text = "Verzeichnis: " + Variablen.SavePath + @"\";
             Label_Speicherort.Location = new Point(path_Label.X - Label_Speicherort.Size.Width, Label_Speicherort.Location.Y);
             buttonChooseSaveDirectory.Location = new Point(Label_Speicherort.Location.X - buttonChooseSaveDirectory.Width - 10, buttonChooseSaveDirectory.Location.Y);
-
+            Label_noDirectory.Hide();
         }
 
         private void buttonChooseDirectory_Click(object sender, EventArgs e)
@@ -202,8 +205,8 @@ namespace HBBK_Scanner
             }
             else
             {
-                MessageBox.Show("Savepath = null");
                 TextBoxID.Text = "";
+                buttonChooseSaveDirectory_Click(sender, e);
             }          
         }
 

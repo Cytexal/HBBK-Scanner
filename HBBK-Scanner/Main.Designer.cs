@@ -38,6 +38,7 @@
             this.Label_Verzeichnis = new MonoFlat.Class1.MonoFlat_Label();
             this.Bilder_Anzeige = new System.Windows.Forms.FlowLayoutPanel();
             this.Tool_Panel = new System.Windows.Forms.Panel();
+            this.TextBoxID = new System.Windows.Forms.TextBox();
             this.Button_Löschen = new Bunifu.Framework.UI.BunifuThinButton2();
             this.monoFlat_Label2 = new MonoFlat.Class1.MonoFlat_Label();
             this.Button_Bearbeiten = new Bunifu.Framework.UI.BunifuThinButton2();
@@ -52,7 +53,7 @@
             this.buttonChooseSaveDirectory = new System.Windows.Forms.Button();
             this.folderBrowserDialogSaveDirectory = new System.Windows.Forms.FolderBrowserDialog();
             this.timerSave = new System.Windows.Forms.Timer(this.components);
-            this.TextBoxID = new System.Windows.Forms.TextBox();
+            this.Label_noDirectory = new MonoFlat.Class1.MonoFlat_Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Tool_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Image_Preview)).BeginInit();
@@ -174,6 +175,14 @@
             this.Tool_Panel.TabIndex = 9;
             this.Tool_Panel.Visible = false;
             // 
+            // TextBoxID
+            // 
+            this.TextBoxID.Location = new System.Drawing.Point(10, 688);
+            this.TextBoxID.Name = "TextBoxID";
+            this.TextBoxID.Size = new System.Drawing.Size(286, 20);
+            this.TextBoxID.TabIndex = 14;
+            this.TextBoxID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxID_KeyPress);
+            // 
             // Button_Löschen
             // 
             this.Button_Löschen.ActiveBorderThickness = 1;
@@ -192,7 +201,7 @@
             this.Button_Löschen.IdleFillColor = System.Drawing.Color.SeaGreen;
             this.Button_Löschen.IdleForecolor = System.Drawing.Color.Honeydew;
             this.Button_Löschen.IdleLineColor = System.Drawing.Color.SeaGreen;
-            this.Button_Löschen.Location = new System.Drawing.Point(508, 380);
+            this.Button_Löschen.Location = new System.Drawing.Point(508, 238);
             this.Button_Löschen.Margin = new System.Windows.Forms.Padding(5);
             this.Button_Löschen.Name = "Button_Löschen";
             this.Button_Löschen.Size = new System.Drawing.Size(227, 66);
@@ -208,7 +217,7 @@
             this.monoFlat_Label2.BackColor = System.Drawing.Color.Transparent;
             this.monoFlat_Label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.monoFlat_Label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(125)))), ((int)(((byte)(132)))));
-            this.monoFlat_Label2.Location = new System.Drawing.Point(534, 474);
+            this.monoFlat_Label2.Location = new System.Drawing.Point(633, 578);
             this.monoFlat_Label2.Name = "monoFlat_Label2";
             this.monoFlat_Label2.Size = new System.Drawing.Size(351, 50);
             this.monoFlat_Label2.TabIndex = 10;
@@ -232,7 +241,7 @@
             this.Button_Bearbeiten.IdleFillColor = System.Drawing.Color.SeaGreen;
             this.Button_Bearbeiten.IdleForecolor = System.Drawing.Color.Honeydew;
             this.Button_Bearbeiten.IdleLineColor = System.Drawing.Color.SeaGreen;
-            this.Button_Bearbeiten.Location = new System.Drawing.Point(508, 316);
+            this.Button_Bearbeiten.Location = new System.Drawing.Point(508, 169);
             this.Button_Bearbeiten.Margin = new System.Windows.Forms.Padding(5);
             this.Button_Bearbeiten.Name = "Button_Bearbeiten";
             this.Button_Bearbeiten.Size = new System.Drawing.Size(227, 66);
@@ -244,7 +253,7 @@
             // 
             this.Label_BHöhe.AutoSize = true;
             this.Label_BHöhe.Font = new System.Drawing.Font("Segoe UI Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_BHöhe.Location = new System.Drawing.Point(501, 234);
+            this.Label_BHöhe.Location = new System.Drawing.Point(501, 111);
             this.Label_BHöhe.Name = "Label_BHöhe";
             this.Label_BHöhe.Size = new System.Drawing.Size(137, 37);
             this.Label_BHöhe.TabIndex = 4;
@@ -254,7 +263,7 @@
             // 
             this.Label_BBreite.AutoSize = true;
             this.Label_BBreite.Font = new System.Drawing.Font("Segoe UI Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_BBreite.Location = new System.Drawing.Point(501, 169);
+            this.Label_BBreite.Location = new System.Drawing.Point(501, 60);
             this.Label_BBreite.Name = "Label_BBreite";
             this.Label_BBreite.Size = new System.Drawing.Size(141, 37);
             this.Label_BBreite.TabIndex = 3;
@@ -347,19 +356,28 @@
             this.timerSave.Interval = 50;
             this.timerSave.Tick += new System.EventHandler(this.timerSave_Tick);
             // 
-            // TextBoxID
+            // Label_noDirectory
             // 
-            this.TextBoxID.Location = new System.Drawing.Point(10, 688);
-            this.TextBoxID.Name = "TextBoxID";
-            this.TextBoxID.Size = new System.Drawing.Size(286, 20);
-            this.TextBoxID.TabIndex = 14;
-            this.TextBoxID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxID_KeyPress);
+            this.Label_noDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Label_noDirectory.AutoSize = true;
+            this.Label_noDirectory.BackColor = System.Drawing.Color.Transparent;
+            this.Label_noDirectory.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_noDirectory.ForeColor = System.Drawing.Color.Red;
+            this.Label_noDirectory.Location = new System.Drawing.Point(1466, 61);
+            this.Label_noDirectory.Name = "Label_noDirectory";
+            this.Label_noDirectory.Size = new System.Drawing.Size(212, 21);
+            this.Label_noDirectory.TabIndex = 13;
+            this.Label_noDirectory.Text = "Kein Speicherort ausgewählt!";
+            this.Label_noDirectory.Visible = false;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1473, 878);
+            this.Controls.Add(this.Label_noDirectory);
             this.Controls.Add(this.buttonChooseSaveDirectory);
             this.Controls.Add(this.buttonChooseDirectory);
             this.Controls.Add(this.Label_Speicherort);
@@ -407,6 +425,7 @@
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogSaveDirectory;
         private System.Windows.Forms.Timer timerSave;
         private System.Windows.Forms.TextBox TextBoxID;
+        private MonoFlat.Class1.MonoFlat_Label Label_noDirectory;
     }
 }
 
