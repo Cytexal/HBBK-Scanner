@@ -32,9 +32,7 @@ namespace HBBK_Scanner
             imagepaths.Clear();
             try
             {
-                imagepaths = ImageUtils.getImagesinFolder(@"" + Variablen.path);
-
-
+            imagepaths = ImageUtils.getImagesinFolder(Variablen.path);
             String firstpath = "";
 
             foreach (String path in imagepaths)
@@ -43,7 +41,7 @@ namespace HBBK_Scanner
                 {
                     if (Image.FromFile(path).Width >= Image.FromFile(path).Height)
                     {
-
+                            //imagepaths.Remove(path);
                     }
                     else
                     {
@@ -209,8 +207,7 @@ namespace HBBK_Scanner
                     img = bmp;
                     if (!File.Exists(Variablen.SavePath + @"\" + TextBoxID.Text + ".jpg"))
                     {
-                        img.Save(Variablen.SavePath + @"\" + TextBoxID.Text + ".jpg");
-                        Bilder_Anzeige.Controls.Remove(GetControlByName(ImageUtils.getImageName(Variablen.preview_image_path)));
+                        SaveImage(img);
                     }
                     else
                     {
@@ -218,7 +215,7 @@ namespace HBBK_Scanner
                             "Möchten sie die Datei überschreiben? ","Duplikat gefunden",MessageBoxButtons.YesNo);
                         if (dialogResult == DialogResult.Yes)
                         {
-                            img.Save(Variablen.SavePath + @"\" + TextBoxID.Text + ".jpg");
+                            SaveImage(img);
                         }
                         else if (dialogResult == DialogResult.No)
                         {
@@ -240,6 +237,75 @@ namespace HBBK_Scanner
                 buttonChooseSaveDirectory_Click(sender, e);
             }          
         }
+
+        public void SaveImage(Image img)
+        {
+            img.Save(Variablen.SavePath + @"\" + TextBoxID.Text + ".jpg");
+
+            List<String> paths = new List<string>();
+            paths.AddRange(nametopath.Values);
+            int index = paths.IndexOf(Variablen.preview_image_path);
+            if(index+1 == paths.Count)
+            {
+                nametopath.Remove(ImageUtils.getImageName(paths[index]));
+                Bilder_Anzeige.Controls.Remove(GetControlByName(ImageUtils.getImageName(paths[index])));
+                if (paths.Count == 1)
+                {
+                    Label_Willkommen.Show();
+
+                    Label_Verzeichnis.Hide();
+
+                    Label_Speicherort.Hide();
+
+
+                    buttonChooseDirectory.Hide();
+
+
+                    buttonChooseSaveDirectory.Hide();
+
+
+                    Label_noDirectory.Hide();
+
+
+                    Bilder_Anzeige.Hide();
+                    Button_Directory.Show();
+                    Tool_Panel.Hide();
+                    Image_Preview.Hide();
+
+                }
+                else
+                {
+                    UpdatePreviewImage(paths[0]);
+                }
+
+            }
+            else
+            {
+                UpdatePreviewImage(paths[index+1]);
+                nametopath.Remove(ImageUtils.getImageName(paths[index]));
+                Bilder_Anzeige.Controls.Remove(GetControlByName(ImageUtils.getImageName(paths[index])));
+            }
+            
+        }
+
+
+        public void UpdatePreviewImage(String path)
+        {
+            Variablen.preview_image_path = path;
+            Double factor = Convert.ToDouble(Image.FromFile(Variablen.preview_image_path).Width) / Image.FromFile(Variablen.preview_image_path).Height;
+            Image_Preview.Size = new Size(Convert.ToInt32(Image_Preview.Height * factor), Image_Preview.Height);
+            Image_Preview.Image = Image.FromFile(Variablen.preview_image_path);
+            Label_DName.Location = new Point(Image_Preview.Size.Width, Label_DName.Location.Y);
+            Label_BBreite.Location = new Point(Image_Preview.Size.Width, Label_BBreite.Location.Y);
+            Label_BHöhe.Location = new Point(Image_Preview.Size.Width, Label_BHöhe.Location.Y);
+            Label_DName.Text = "Datei-Name: " + ImageUtils.getImageName(path);
+            Button_Bearbeiten.Location = new Point(Image_Preview.Size.Width + 8, Button_Bearbeiten.Location.Y);
+            Button_Löschen.Location = new Point(Image_Preview.Size.Width + 8, Button_Löschen.Location.Y);
+            Label_BBreite.Text = "Bild-Breite: " + Image_Preview.Image.Width + " px";
+            Label_BHöhe.Text = "Bild-Höhe: " + Image_Preview.Image.Height + " px";
+            Label_BPfad.Text = "Pfad: " + path;
+        }
+
 
         private void TextBoxID_KeyPress(object sender, KeyPressEventArgs e)
         {
