@@ -32,8 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.Label_Willkommen = new MonoFlat.Class1.MonoFlat_Label();
             this.Image_Directionary = new System.Windows.Forms.FolderBrowserDialog();
-            this.monoFlat_Label1 = new MonoFlat.Class1.MonoFlat_Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.monoFlat_LabelTitel = new MonoFlat.Class1.MonoFlat_Label();
+            this.pictureBoxHBBKLogo = new System.Windows.Forms.PictureBox();
             this.Button_Directory = new Bunifu.Framework.UI.BunifuThinButton2();
             this.Label_Verzeichnis = new MonoFlat.Class1.MonoFlat_Label();
             this.Bilder_Anzeige = new System.Windows.Forms.FlowLayoutPanel();
@@ -54,7 +54,7 @@
             this.folderBrowserDialogSaveDirectory = new System.Windows.Forms.FolderBrowserDialog();
             this.timerSave = new System.Windows.Forms.Timer(this.components);
             this.Label_noDirectory = new MonoFlat.Class1.MonoFlat_Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHBBKLogo)).BeginInit();
             this.Tool_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Image_Preview)).BeginInit();
             this.SuspendLayout();
@@ -78,31 +78,30 @@
             // 
             this.Image_Directionary.Description = "Wählen Sie das Verzeichnis mit den Bildern.";
             // 
-            // monoFlat_Label1
+            // monoFlat_LabelTitel
             // 
-            this.monoFlat_Label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.monoFlat_LabelTitel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.monoFlat_Label1.AutoSize = true;
-            this.monoFlat_Label1.BackColor = System.Drawing.Color.Transparent;
-            this.monoFlat_Label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.monoFlat_Label1.ForeColor = System.Drawing.Color.Gray;
-            this.monoFlat_Label1.Location = new System.Drawing.Point(79, 24);
-            this.monoFlat_Label1.Name = "monoFlat_Label1";
-            this.monoFlat_Label1.Size = new System.Drawing.Size(373, 45);
-            this.monoFlat_Label1.TabIndex = 5;
-            this.monoFlat_Label1.Text = "HBBK | Schüler Scanner";
+            this.monoFlat_LabelTitel.AutoSize = true;
+            this.monoFlat_LabelTitel.BackColor = System.Drawing.Color.Transparent;
+            this.monoFlat_LabelTitel.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.monoFlat_LabelTitel.ForeColor = System.Drawing.Color.Gray;
+            this.monoFlat_LabelTitel.Location = new System.Drawing.Point(79, 24);
+            this.monoFlat_LabelTitel.Name = "monoFlat_LabelTitel";
+            this.monoFlat_LabelTitel.Size = new System.Drawing.Size(373, 45);
+            this.monoFlat_LabelTitel.TabIndex = 5;
+            this.monoFlat_LabelTitel.Text = "HBBK | Schüler Scanner";
             // 
-            // pictureBox1
+            // pictureBoxHBBKLogo
             // 
-            this.pictureBox1.Image = global::HBBK_Scanner.Properties.Resources.Logo;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(61, 57);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.pictureBoxHBBKLogo.Image = global::HBBK_Scanner.Properties.Resources.Logo;
+            this.pictureBoxHBBKLogo.Location = new System.Drawing.Point(12, 12);
+            this.pictureBoxHBBKLogo.Name = "pictureBoxHBBKLogo";
+            this.pictureBoxHBBKLogo.Size = new System.Drawing.Size(61, 57);
+            this.pictureBoxHBBKLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxHBBKLogo.TabIndex = 6;
+            this.pictureBoxHBBKLogo.TabStop = false;
             // 
             // Button_Directory
             // 
@@ -387,8 +386,8 @@
             this.Controls.Add(this.Tool_Panel);
             this.Controls.Add(this.Bilder_Anzeige);
             this.Controls.Add(this.Label_Verzeichnis);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.monoFlat_Label1);
+            this.Controls.Add(this.pictureBoxHBBKLogo);
+            this.Controls.Add(this.monoFlat_LabelTitel);
             this.Controls.Add(this.Button_Directory);
             this.Controls.Add(this.Label_Willkommen);
             this.Name = "Main";
@@ -396,7 +395,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Main_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Main_KeyPress);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHBBKLogo)).EndInit();
             this.Tool_Panel.ResumeLayout(false);
             this.Tool_Panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Image_Preview)).EndInit();
@@ -409,8 +408,8 @@
         private MonoFlat.Class1.MonoFlat_Label Label_Willkommen;
         private Bunifu.Framework.UI.BunifuThinButton2 Button_Directory;
         private System.Windows.Forms.FolderBrowserDialog Image_Directionary;
-        private MonoFlat.Class1.MonoFlat_Label monoFlat_Label1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private MonoFlat.Class1.MonoFlat_Label monoFlat_LabelTitel;
+        private System.Windows.Forms.PictureBox pictureBoxHBBKLogo;
         private MonoFlat.Class1.MonoFlat_Label Label_Verzeichnis;
         private System.Windows.Forms.FlowLayoutPanel Bilder_Anzeige;
         private System.Windows.Forms.Panel Tool_Panel;

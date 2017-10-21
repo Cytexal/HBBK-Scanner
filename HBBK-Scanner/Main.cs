@@ -188,10 +188,11 @@ namespace HBBK_Scanner
 
         private Control GetControlByName(string Name)
         {
-            foreach (Control c in this.Controls)
-                if (c.Name == Name)
-                    return c;
-
+            foreach (Control c in Bilder_Anzeige.Controls)
+            {
+            if (c.Name == Name)
+                return c;
+            }
             return null;
         }
 
@@ -209,7 +210,7 @@ namespace HBBK_Scanner
                     if (!File.Exists(Variablen.SavePath + @"\" + TextBoxID.Text + ".jpg"))
                     {
                         img.Save(Variablen.SavePath + @"\" + TextBoxID.Text + ".jpg");
-                        //Bilder_Anzeige.Controls.Remove(GetControlByName(Variablen.preview_image_path));
+                        Bilder_Anzeige.Controls.Remove(GetControlByName(ImageUtils.getImageName(Variablen.preview_image_path)));
                     }
                     else
                     {
@@ -249,11 +250,6 @@ namespace HBBK_Scanner
         private void Main_KeyPress(object sender, KeyPressEventArgs e)
         {
             MessageBox.Show(e.KeyChar.ToString());
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show(GetControlByName(Variablen.preview_image_path).ToString()); //test
         }
     }
 }
