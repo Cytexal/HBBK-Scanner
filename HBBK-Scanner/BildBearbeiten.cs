@@ -12,6 +12,7 @@ namespace HBBK_Scanner
 {
     public partial class BildBearbeiten : Form
     {
+
         public BildBearbeiten()
         {
             InitializeComponent();
@@ -19,13 +20,18 @@ namespace HBBK_Scanner
 
         private void BildBearbeiten_Load(object sender, EventArgs e)
         {
-            Double factor = Convert.ToDouble(Image.FromFile(Variablen.preview_image_path).Width) / Image.FromFile(Variablen.preview_image_path).Height;
-            pictureBoxEdit.Size = new Size(Convert.ToInt32(pictureBoxEdit.Height * factor), pictureBoxEdit.Height);
-            pictureBoxEdit.Image = Image.FromFile(Variablen.preview_image_path);
-
-            buttonCancel.Location = new Point(pictureBoxEdit.Location.X + pictureBoxEdit.Size.Width + 8, buttonCancel.Location.Y);
-            ButtonBestätigen.Location = new Point(pictureBoxEdit.Location.X + pictureBoxEdit.Size.Width + 8 + buttonCancel.Size.Width + 8, ButtonBestätigen.Location.Y);
-
+            if(Image.FromFile(Variablen.preview_image_path).Height >= 1000)
+            {
+                Double factor = Convert.ToDouble(Image.FromFile(Variablen.preview_image_path).Width) / Image.FromFile(Variablen.preview_image_path).Height;
+                this.Size = new Size(Convert.ToInt32(1000 * factor), 1000);
+                this.BackgroundImage = Image.FromFile(Variablen.preview_image_path);
+            }
+            else
+            {
+                Double factor = Convert.ToDouble(Image.FromFile(Variablen.preview_image_path).Width) / Image.FromFile(Variablen.preview_image_path).Height;
+                this.Size = new Size(Convert.ToInt32(Image.FromFile(Variablen.preview_image_path).Height * factor), Image.FromFile(Variablen.preview_image_path).Height);
+                this.BackgroundImage = Image.FromFile(Variablen.preview_image_path);
+            }
         }
     }
 }

@@ -208,6 +208,7 @@
             this.Button_Löschen.Size = new System.Drawing.Size(227, 66);
             this.Button_Löschen.TabIndex = 12;
             this.Button_Löschen.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Button_Löschen.Click += new System.EventHandler(this.Button_Löschen_Click);
             // 
             // monoFlat_Label2
             // 

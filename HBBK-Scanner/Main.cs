@@ -317,7 +317,62 @@ namespace HBBK_Scanner
 
         private void Main_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MessageBox.Show(e.KeyChar.ToString());
+        }
+
+        private void Button_Löschen_Click(object sender, EventArgs e)
+        {
+            string RightNow = Variablen.preview_image_path;
+            List<String> paths = new List<string>();
+            paths.AddRange(nametopath.Values);
+            int index = paths.IndexOf(Variablen.preview_image_path);
+            if (index + 1 == paths.Count)
+            {
+                nametopath.Remove(ImageUtils.getImageName(paths[index]));
+                Bilder_Anzeige.Controls.Remove(GetControlByName(ImageUtils.getImageName(paths[index])));
+                if (paths.Count == 1)
+                {
+                    Label_Willkommen.Show();
+
+                    Label_Verzeichnis.Hide();
+
+                    Label_Speicherort.Hide();
+
+
+                    buttonChooseDirectory.Hide();
+
+
+                    buttonChooseSaveDirectory.Hide();
+
+
+                    Label_noDirectory.Hide();
+
+
+                    Bilder_Anzeige.Hide();
+                    Button_Directory.Show();
+                    Tool_Panel.Hide();
+                    Image_Preview.Hide();
+
+                }
+                else
+                {
+                    UpdatePreviewImage(paths[0]);
+                }
+
+            }
+            else
+            {
+                UpdatePreviewImage(paths[index + 1]);
+                nametopath.Remove(ImageUtils.getImageName(paths[index]));
+                Bilder_Anzeige.Controls.Remove(GetControlByName(ImageUtils.getImageName(paths[index])));
+            }
+            try
+            {
+                File.Delete(RightNow);
+            }
+            catch
+            {
+
+            }
         }
     }
 }
