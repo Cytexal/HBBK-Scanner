@@ -159,6 +159,7 @@
             this.Tool_Panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.Tool_Panel.AutoScroll = true;
             this.Tool_Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Tool_Panel.Controls.Add(this.TextBoxID);
             this.Tool_Panel.Controls.Add(this.Button_Löschen);

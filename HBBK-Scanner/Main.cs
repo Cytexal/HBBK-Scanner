@@ -154,6 +154,8 @@ namespace HBBK_Scanner
 
         private void Button_Bearbeiten_Click(object sender, EventArgs e)
         {
+            BildBearbeiten BBA = new BildBearbeiten();
+            BBA.ShowDialog();
         }
 
         private void buttonChooseSaveDirectory_Click(object sender, EventArgs e)
