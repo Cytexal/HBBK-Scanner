@@ -30,6 +30,7 @@ namespace HBBK_Scanner
         public void RefreshImages()
         {
             imagepaths.Clear();
+            Bilder_Anzeige.Controls.Clear();
             try
             {
             imagepaths = ImageUtils.getImagesinFolder(Variablen.path);
@@ -176,7 +177,6 @@ namespace HBBK_Scanner
         {
             if (Image_Directionary.ShowDialog() == DialogResult.OK)
             {
-                Bilder_Anzeige.Controls.Clear();
                 Variablen.path = Image_Directionary.SelectedPath;
                 Label_Verzeichnis.Text = "Verzeichnis: " + Variablen.path + @"\";
                 Label_Verzeichnis.Location = new Point(path_Label.X - Label_Verzeichnis.Size.Width, Label_Verzeichnis.Location.Y);
