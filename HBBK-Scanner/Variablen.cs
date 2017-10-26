@@ -12,5 +12,6 @@ namespace HBBK_Scanner
         public static String SavePath;
         public static String preview_image_path;
         public static bool input;
+        public static bool PicsFound = false;
     }
 }

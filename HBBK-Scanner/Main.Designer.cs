@@ -54,7 +54,10 @@
             this.folderBrowserDialogSaveDirectory = new System.Windows.Forms.FolderBrowserDialog();
             this.timerSave = new System.Windows.Forms.Timer(this.components);
             this.Label_noDirectory = new MonoFlat.Class1.MonoFlat_Label();
+            this.LabelNoPics = new MonoFlat.Class1.MonoFlat_Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHBBKLogo)).BeginInit();
+            this.Bilder_Anzeige.SuspendLayout();
             this.Tool_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Image_Preview)).BeginInit();
             this.SuspendLayout();
@@ -148,6 +151,7 @@
             this.Bilder_Anzeige.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.Bilder_Anzeige.AutoScroll = true;
+            this.Bilder_Anzeige.Controls.Add(this.LabelNoPics);
             this.Bilder_Anzeige.Location = new System.Drawing.Point(12, 91);
             this.Bilder_Anzeige.Name = "Bilder_Anzeige";
             this.Bilder_Anzeige.Size = new System.Drawing.Size(542, 775);
@@ -376,11 +380,38 @@
             this.Label_noDirectory.Text = "Kein Speicherort ausgewählt!";
             this.Label_noDirectory.Visible = false;
             // 
+            // LabelNoPics
+            // 
+            this.LabelNoPics.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.LabelNoPics.AutoSize = true;
+            this.LabelNoPics.BackColor = System.Drawing.Color.Transparent;
+            this.LabelNoPics.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelNoPics.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(125)))), ((int)(((byte)(132)))));
+            this.LabelNoPics.Location = new System.Drawing.Point(3, 0);
+            this.LabelNoPics.Name = "LabelNoPics";
+            this.LabelNoPics.Size = new System.Drawing.Size(204, 25);
+            this.LabelNoPics.TabIndex = 14;
+            this.LabelNoPics.Text = "Keine Bilder gefunden!";
+            this.LabelNoPics.Visible = false;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(503, 33);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 14;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1473, 878);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.Label_noDirectory);
             this.Controls.Add(this.buttonChooseSaveDirectory);
             this.Controls.Add(this.buttonChooseDirectory);
@@ -398,6 +429,8 @@
             this.Load += new System.EventHandler(this.Main_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Main_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHBBKLogo)).EndInit();
+            this.Bilder_Anzeige.ResumeLayout(false);
+            this.Bilder_Anzeige.PerformLayout();
             this.Tool_Panel.ResumeLayout(false);
             this.Tool_Panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Image_Preview)).EndInit();
@@ -431,6 +464,8 @@
         private System.Windows.Forms.Timer timerSave;
         private System.Windows.Forms.TextBox TextBoxID;
         private MonoFlat.Class1.MonoFlat_Label Label_noDirectory;
+        private MonoFlat.Class1.MonoFlat_Label LabelNoPics;
+        private System.Windows.Forms.Button button1;
     }
 }
 

@@ -65,23 +65,26 @@ namespace HBBK_Scanner
             }
 
 
-            Variablen.preview_image_path = firstpath;
-            Double factor = Convert.ToDouble(Image.FromFile(Variablen.preview_image_path).Width) / Image.FromFile(Variablen.preview_image_path).Height;
-            Image_Preview.Size = new Size(Convert.ToInt32(Image_Preview.Height * factor), Image_Preview.Height);
-            Image_Preview.Image = Image.FromFile(Variablen.preview_image_path);
-            Label_DName.Location = new Point(Image_Preview.Size.Width, Label_DName.Location.Y);
-            Label_BBreite.Location = new Point(Image_Preview.Size.Width, Label_BBreite.Location.Y);
-            Label_BHöhe.Location = new Point(Image_Preview.Size.Width, Label_BHöhe.Location.Y);
-            Button_Bearbeiten.Location = new Point(Image_Preview.Size.Width + 8,Button_Bearbeiten.Location.Y);
-            Button_Löschen.Location = new Point(Image_Preview.Size.Width + 8, Button_Löschen.Location.Y);
-            Label_DName.Text = "Datei-Name: " + ImageUtils.getImageName(firstpath);
-            Label_BBreite.Text = "Bild-Breite: " + Image_Preview.Image.Width + " px";
-            Label_BHöhe.Text = "Bild-Höhe: " + Image_Preview.Image.Height + " px";
-            Label_BPfad.Text = "Pfad: " + firstpath;
+                Variablen.preview_image_path = firstpath;
+                Double factor = Convert.ToDouble(Image.FromFile(Variablen.preview_image_path).Width) / Image.FromFile(Variablen.preview_image_path).Height;
+                Image_Preview.Size = new Size(Convert.ToInt32(Image_Preview.Height * factor), Image_Preview.Height);
+                Image_Preview.Image = Image.FromFile(Variablen.preview_image_path);
+                Label_DName.Location = new Point(Image_Preview.Size.Width, Label_DName.Location.Y);
+                Label_BBreite.Location = new Point(Image_Preview.Size.Width, Label_BBreite.Location.Y);
+                Label_BHöhe.Location = new Point(Image_Preview.Size.Width, Label_BHöhe.Location.Y);
+                Button_Bearbeiten.Location = new Point(Image_Preview.Size.Width + 8,Button_Bearbeiten.Location.Y);
+                Button_Löschen.Location = new Point(Image_Preview.Size.Width + 8, Button_Löschen.Location.Y);
+                Label_DName.Text = "Datei-Name: " + ImageUtils.getImageName(firstpath);
+                Label_BBreite.Text = "Bild-Breite: " + Image_Preview.Image.Width + " px";
+                Label_BHöhe.Text = "Bild-Höhe: " + Image_Preview.Image.Height + " px";
+                Label_BPfad.Text = "Pfad: " + firstpath;
+                Variablen.PicsFound = true;
+                LabelNoPics.Hide();
             }
             catch
             {
-                MessageBox.Show("Fehler: Dialog geschlossen"); //MUSS NOCH NE ALTERNATIVE PROGRAMMIERT WERDEN 
+                Variablen.PicsFound = false;
+                LabelNoPics.Show();
             }
 
         }
@@ -112,35 +115,36 @@ namespace HBBK_Scanner
 
         private void Button_Directory_Click(object sender, EventArgs e)
         {
-            Image_Directionary.ShowDialog();
-            Variablen.path = Image_Directionary.SelectedPath;
-            Label_Willkommen.Hide();
+            if (Image_Directionary.ShowDialog() == DialogResult.OK)
+            {
 
-            Label_Verzeichnis.Text = "Verzeichnis: " + Variablen.path;
-            Label_Verzeichnis.Location = new Point(path_Label.X - Label_Verzeichnis.Size.Width, Label_Verzeichnis.Location.Y);
-            Label_Verzeichnis.Show();
+                Variablen.path = Image_Directionary.SelectedPath;
+                Label_Willkommen.Hide();
 
-            Label_Speicherort.Text = "Speicherort: Kein Verzeichnis ausgewählt";
-            Label_Speicherort.Location = new Point(path_Label.X - Label_Speicherort.Size.Width, Label_Speicherort.Location.Y);
-            Label_Speicherort.Show();
+                Label_Verzeichnis.Text = "Verzeichnis: " + Variablen.path;
+                Label_Verzeichnis.Location = new Point(path_Label.X - Label_Verzeichnis.Size.Width, Label_Verzeichnis.Location.Y);
+                Label_Verzeichnis.Show();
 
-            buttonChooseDirectory.Location = new Point(Label_Verzeichnis.Location.X - buttonChooseDirectory.Size.Width - 5,buttonChooseDirectory.Location.Y);
-            buttonChooseDirectory.Show();
+                Label_Speicherort.Text = "Speicherort: Kein Verzeichnis ausgewählt";
+                Label_Speicherort.Location = new Point(path_Label.X - Label_Speicherort.Size.Width, Label_Speicherort.Location.Y);
+                Label_Speicherort.Show();
 
-            buttonChooseSaveDirectory.Location = new Point(Label_Speicherort.Location.X - buttonChooseSaveDirectory.Size.Width - 5, buttonChooseSaveDirectory.Location.Y);
-            buttonChooseSaveDirectory.Show();
+                buttonChooseDirectory.Location = new Point(Label_Verzeichnis.Location.X - buttonChooseDirectory.Size.Width - 5, buttonChooseDirectory.Location.Y);
+                buttonChooseDirectory.Show();
 
-            Label_noDirectory.Location = new Point(path_Label.X - Label_noDirectory.Size.Width, Label_noDirectory.Location.Y);
-            Label_noDirectory.Show();
+                buttonChooseSaveDirectory.Location = new Point(Label_Speicherort.Location.X - buttonChooseSaveDirectory.Size.Width - 5, buttonChooseSaveDirectory.Location.Y);
+                buttonChooseSaveDirectory.Show();
+
+                Label_noDirectory.Location = new Point(path_Label.X - Label_noDirectory.Size.Width, Label_noDirectory.Location.Y);
+                Label_noDirectory.Show();
 
 
-            Bilder_Anzeige.Show();
-            Button_Directory.Hide();
-            RefreshImages();
-            Tool_Panel.Show();
-            Image_Preview.Show();
-            
-
+                Bilder_Anzeige.Show();
+                Button_Directory.Hide();
+                RefreshImages();
+                Tool_Panel.Show();
+                Image_Preview.Show();
+            }
         }
 
         private void timer_focus_Tick(object sender, EventArgs e)
@@ -154,29 +158,31 @@ namespace HBBK_Scanner
 
         private void Button_Bearbeiten_Click(object sender, EventArgs e)
         {
-            BildBearbeiten BBA = new BildBearbeiten();
-            BBA.ShowDialog();
         }
 
         private void buttonChooseSaveDirectory_Click(object sender, EventArgs e)
         {
-            folderBrowserDialogSaveDirectory.ShowDialog();
-            Variablen.SavePath = folderBrowserDialogSaveDirectory.SelectedPath;
-            Label_Speicherort.Text = "Verzeichnis: " + Variablen.SavePath + @"\";
-            Label_Speicherort.Location = new Point(path_Label.X - Label_Speicherort.Size.Width, Label_Speicherort.Location.Y);
-            buttonChooseSaveDirectory.Location = new Point(Label_Speicherort.Location.X - buttonChooseSaveDirectory.Width - 10, buttonChooseSaveDirectory.Location.Y);
-            Label_noDirectory.Hide();
+            if (folderBrowserDialogSaveDirectory.ShowDialog() == DialogResult.OK)
+            {
+                Variablen.SavePath = folderBrowserDialogSaveDirectory.SelectedPath;
+                Label_Speicherort.Text = "Verzeichnis: " + Variablen.SavePath + @"\";
+                Label_Speicherort.Location = new Point(path_Label.X - Label_Speicherort.Size.Width, Label_Speicherort.Location.Y);
+                buttonChooseSaveDirectory.Location = new Point(Label_Speicherort.Location.X - buttonChooseSaveDirectory.Width - 10, buttonChooseSaveDirectory.Location.Y);
+                Label_noDirectory.Hide();
+            }
         }
 
         private void buttonChooseDirectory_Click(object sender, EventArgs e)
         {
-            Image_Directionary.ShowDialog();
-            Variablen.path = Image_Directionary.SelectedPath;
-            Label_Verzeichnis.Text = "Verzeichnis: " + Variablen.path + @"\";
-            Label_Verzeichnis.Location = new Point(path_Label.X - Label_Verzeichnis.Size.Width, Label_Verzeichnis.Location.Y);
-            buttonChooseDirectory.Location = new Point(Label_Verzeichnis.Location.X - buttonChooseDirectory.Width -10, buttonChooseDirectory.Location.Y);
-            RefreshImages();
-            
+            if (Image_Directionary.ShowDialog() == DialogResult.OK)
+            {
+                Bilder_Anzeige.Controls.Clear();
+                Variablen.path = Image_Directionary.SelectedPath;
+                Label_Verzeichnis.Text = "Verzeichnis: " + Variablen.path + @"\";
+                Label_Verzeichnis.Location = new Point(path_Label.X - Label_Verzeichnis.Size.Width, Label_Verzeichnis.Location.Y);
+                buttonChooseDirectory.Location = new Point(Label_Verzeichnis.Location.X - buttonChooseDirectory.Width - 10, buttonChooseDirectory.Location.Y);
+                RefreshImages();
+            }
         }
 
         private void TextBox_Hidden_KeyPress(object sender, KeyPressEventArgs e)
@@ -373,6 +379,11 @@ namespace HBBK_Scanner
             {
 
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(Variablen.PicsFound.ToString());
         }
     }
 }
