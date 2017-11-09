@@ -37,15 +37,18 @@
             this.Button_Directory = new Bunifu.Framework.UI.BunifuThinButton2();
             this.Label_Verzeichnis = new MonoFlat.Class1.MonoFlat_Label();
             this.Bilder_Anzeige = new System.Windows.Forms.FlowLayoutPanel();
+            this.LabelNoPics = new MonoFlat.Class1.MonoFlat_Label();
             this.Tool_Panel = new System.Windows.Forms.Panel();
+            this.panelDName = new System.Windows.Forms.Panel();
+            this.Label_DName = new System.Windows.Forms.Label();
+            this.panelPfad = new System.Windows.Forms.Panel();
+            this.Label_BPfad = new System.Windows.Forms.Label();
+            this.labelCreateTime = new System.Windows.Forms.Label();
             this.TextBoxID = new System.Windows.Forms.TextBox();
             this.Button_Löschen = new Bunifu.Framework.UI.BunifuThinButton2();
             this.monoFlat_Label2 = new MonoFlat.Class1.MonoFlat_Label();
-            this.Button_Bearbeiten = new Bunifu.Framework.UI.BunifuThinButton2();
             this.Label_BHöhe = new System.Windows.Forms.Label();
             this.Label_BBreite = new System.Windows.Forms.Label();
-            this.Label_BPfad = new System.Windows.Forms.Label();
-            this.Label_DName = new System.Windows.Forms.Label();
             this.Image_Preview = new System.Windows.Forms.PictureBox();
             this.timer_focus = new System.Windows.Forms.Timer(this.components);
             this.Label_Speicherort = new MonoFlat.Class1.MonoFlat_Label();
@@ -54,11 +57,11 @@
             this.folderBrowserDialogSaveDirectory = new System.Windows.Forms.FolderBrowserDialog();
             this.timerSave = new System.Windows.Forms.Timer(this.components);
             this.Label_noDirectory = new MonoFlat.Class1.MonoFlat_Label();
-            this.LabelNoPics = new MonoFlat.Class1.MonoFlat_Label();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHBBKLogo)).BeginInit();
             this.Bilder_Anzeige.SuspendLayout();
             this.Tool_Panel.SuspendLayout();
+            this.panelDName.SuspendLayout();
+            this.panelPfad.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Image_Preview)).BeginInit();
             this.SuspendLayout();
             // 
@@ -158,6 +161,22 @@
             this.Bilder_Anzeige.TabIndex = 8;
             this.Bilder_Anzeige.Visible = false;
             // 
+            // LabelNoPics
+            // 
+            this.LabelNoPics.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.LabelNoPics.AutoSize = true;
+            this.LabelNoPics.BackColor = System.Drawing.Color.Transparent;
+            this.LabelNoPics.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelNoPics.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(125)))), ((int)(((byte)(132)))));
+            this.LabelNoPics.Location = new System.Drawing.Point(3, 0);
+            this.LabelNoPics.Name = "LabelNoPics";
+            this.LabelNoPics.Size = new System.Drawing.Size(204, 25);
+            this.LabelNoPics.TabIndex = 14;
+            this.LabelNoPics.Text = "Keine Bilder gefunden!";
+            this.LabelNoPics.Visible = false;
+            // 
             // Tool_Panel
             // 
             this.Tool_Panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -165,14 +184,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Tool_Panel.AutoScroll = true;
             this.Tool_Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Tool_Panel.Controls.Add(this.panelDName);
+            this.Tool_Panel.Controls.Add(this.panelPfad);
+            this.Tool_Panel.Controls.Add(this.labelCreateTime);
             this.Tool_Panel.Controls.Add(this.TextBoxID);
             this.Tool_Panel.Controls.Add(this.Button_Löschen);
             this.Tool_Panel.Controls.Add(this.monoFlat_Label2);
-            this.Tool_Panel.Controls.Add(this.Button_Bearbeiten);
             this.Tool_Panel.Controls.Add(this.Label_BHöhe);
             this.Tool_Panel.Controls.Add(this.Label_BBreite);
-            this.Tool_Panel.Controls.Add(this.Label_BPfad);
-            this.Tool_Panel.Controls.Add(this.Label_DName);
             this.Tool_Panel.Controls.Add(this.Image_Preview);
             this.Tool_Panel.Location = new System.Drawing.Point(560, 91);
             this.Tool_Panel.Name = "Tool_Panel";
@@ -180,9 +199,61 @@
             this.Tool_Panel.TabIndex = 9;
             this.Tool_Panel.Visible = false;
             // 
+            // panelDName
+            // 
+            this.panelDName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelDName.AutoScroll = true;
+            this.panelDName.Controls.Add(this.Label_DName);
+            this.panelDName.Location = new System.Drawing.Point(508, 13);
+            this.panelDName.Name = "panelDName";
+            this.panelDName.Size = new System.Drawing.Size(397, 54);
+            this.panelDName.TabIndex = 17;
+            // 
+            // Label_DName
+            // 
+            this.Label_DName.AutoSize = true;
+            this.Label_DName.Font = new System.Drawing.Font("Segoe UI Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_DName.Location = new System.Drawing.Point(0, 2);
+            this.Label_DName.Name = "Label_DName";
+            this.Label_DName.Size = new System.Drawing.Size(161, 37);
+            this.Label_DName.TabIndex = 1;
+            this.Label_DName.Text = "Datei-Name:";
+            // 
+            // panelPfad
+            // 
+            this.panelPfad.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelPfad.AutoScroll = true;
+            this.panelPfad.Controls.Add(this.Label_BPfad);
+            this.panelPfad.Location = new System.Drawing.Point(10, 680);
+            this.panelPfad.Name = "panelPfad";
+            this.panelPfad.Size = new System.Drawing.Size(886, 59);
+            this.panelPfad.TabIndex = 16;
+            // 
+            // Label_BPfad
+            // 
+            this.Label_BPfad.AutoSize = true;
+            this.Label_BPfad.Font = new System.Drawing.Font("Segoe UI Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_BPfad.Location = new System.Drawing.Point(7, 5);
+            this.Label_BPfad.Name = "Label_BPfad";
+            this.Label_BPfad.Size = new System.Drawing.Size(73, 37);
+            this.Label_BPfad.TabIndex = 2;
+            this.Label_BPfad.Text = "Pfad:";
+            // 
+            // labelCreateTime
+            // 
+            this.labelCreateTime.AutoSize = true;
+            this.labelCreateTime.Font = new System.Drawing.Font("Segoe UI Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCreateTime.Location = new System.Drawing.Point(501, 162);
+            this.labelCreateTime.Name = "labelCreateTime";
+            this.labelCreateTime.Size = new System.Drawing.Size(162, 37);
+            this.labelCreateTime.TabIndex = 15;
+            this.labelCreateTime.Text = "Erstelldatum:";
+            // 
             // TextBoxID
             // 
-            this.TextBoxID.Location = new System.Drawing.Point(10, 688);
+            this.TextBoxID.Location = new System.Drawing.Point(10, 746);
             this.TextBoxID.Name = "TextBoxID";
             this.TextBoxID.Size = new System.Drawing.Size(286, 20);
             this.TextBoxID.TabIndex = 14;
@@ -206,7 +277,7 @@
             this.Button_Löschen.IdleFillColor = System.Drawing.Color.SeaGreen;
             this.Button_Löschen.IdleForecolor = System.Drawing.Color.Honeydew;
             this.Button_Löschen.IdleLineColor = System.Drawing.Color.SeaGreen;
-            this.Button_Löschen.Location = new System.Drawing.Point(508, 238);
+            this.Button_Löschen.Location = new System.Drawing.Point(508, 251);
             this.Button_Löschen.Margin = new System.Windows.Forms.Padding(5);
             this.Button_Löschen.Name = "Button_Löschen";
             this.Button_Löschen.Size = new System.Drawing.Size(227, 66);
@@ -223,37 +294,11 @@
             this.monoFlat_Label2.BackColor = System.Drawing.Color.Transparent;
             this.monoFlat_Label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.monoFlat_Label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(125)))), ((int)(((byte)(132)))));
-            this.monoFlat_Label2.Location = new System.Drawing.Point(633, 578);
+            this.monoFlat_Label2.Location = new System.Drawing.Point(621, 497);
             this.monoFlat_Label2.Name = "monoFlat_Label2";
             this.monoFlat_Label2.Size = new System.Drawing.Size(351, 50);
             this.monoFlat_Label2.TabIndex = 10;
             this.monoFlat_Label2.Text = "       Scannen Sie jetzt den Barcode,\r\num das Bild unter seiner ID zu speichern";
-            // 
-            // Button_Bearbeiten
-            // 
-            this.Button_Bearbeiten.ActiveBorderThickness = 1;
-            this.Button_Bearbeiten.ActiveCornerRadius = 20;
-            this.Button_Bearbeiten.ActiveFillColor = System.Drawing.Color.Honeydew;
-            this.Button_Bearbeiten.ActiveForecolor = System.Drawing.Color.SeaGreen;
-            this.Button_Bearbeiten.ActiveLineColor = System.Drawing.Color.SeaGreen;
-            this.Button_Bearbeiten.BackColor = System.Drawing.SystemColors.Control;
-            this.Button_Bearbeiten.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Button_Bearbeiten.BackgroundImage")));
-            this.Button_Bearbeiten.ButtonText = "Bild bearbeiten";
-            this.Button_Bearbeiten.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Button_Bearbeiten.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Button_Bearbeiten.ForeColor = System.Drawing.Color.SeaGreen;
-            this.Button_Bearbeiten.IdleBorderThickness = 1;
-            this.Button_Bearbeiten.IdleCornerRadius = 20;
-            this.Button_Bearbeiten.IdleFillColor = System.Drawing.Color.SeaGreen;
-            this.Button_Bearbeiten.IdleForecolor = System.Drawing.Color.Honeydew;
-            this.Button_Bearbeiten.IdleLineColor = System.Drawing.Color.SeaGreen;
-            this.Button_Bearbeiten.Location = new System.Drawing.Point(508, 169);
-            this.Button_Bearbeiten.Margin = new System.Windows.Forms.Padding(5);
-            this.Button_Bearbeiten.Name = "Button_Bearbeiten";
-            this.Button_Bearbeiten.Size = new System.Drawing.Size(227, 66);
-            this.Button_Bearbeiten.TabIndex = 10;
-            this.Button_Bearbeiten.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Button_Bearbeiten.Click += new System.EventHandler(this.Button_Bearbeiten_Click);
             // 
             // Label_BHöhe
             // 
@@ -274,26 +319,6 @@
             this.Label_BBreite.Size = new System.Drawing.Size(141, 37);
             this.Label_BBreite.TabIndex = 3;
             this.Label_BBreite.Text = "Bild-Breite:";
-            // 
-            // Label_BPfad
-            // 
-            this.Label_BPfad.AutoSize = true;
-            this.Label_BPfad.Font = new System.Drawing.Font("Segoe UI Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_BPfad.Location = new System.Drawing.Point(3, 711);
-            this.Label_BPfad.Name = "Label_BPfad";
-            this.Label_BPfad.Size = new System.Drawing.Size(73, 37);
-            this.Label_BPfad.TabIndex = 2;
-            this.Label_BPfad.Text = "Pfad:";
-            // 
-            // Label_DName
-            // 
-            this.Label_DName.AutoSize = true;
-            this.Label_DName.Font = new System.Drawing.Font("Segoe UI Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_DName.Location = new System.Drawing.Point(501, 14);
-            this.Label_DName.Name = "Label_DName";
-            this.Label_DName.Size = new System.Drawing.Size(161, 37);
-            this.Label_DName.TabIndex = 1;
-            this.Label_DName.Text = "Datei-Name:";
             // 
             // Image_Preview
             // 
@@ -380,38 +405,11 @@
             this.Label_noDirectory.Text = "Kein Speicherort ausgewählt!";
             this.Label_noDirectory.Visible = false;
             // 
-            // LabelNoPics
-            // 
-            this.LabelNoPics.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.LabelNoPics.AutoSize = true;
-            this.LabelNoPics.BackColor = System.Drawing.Color.Transparent;
-            this.LabelNoPics.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelNoPics.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(125)))), ((int)(((byte)(132)))));
-            this.LabelNoPics.Location = new System.Drawing.Point(3, 0);
-            this.LabelNoPics.Name = "LabelNoPics";
-            this.LabelNoPics.Size = new System.Drawing.Size(204, 25);
-            this.LabelNoPics.TabIndex = 14;
-            this.LabelNoPics.Text = "Keine Bilder gefunden!";
-            this.LabelNoPics.Visible = false;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(503, 33);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1473, 878);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.Label_noDirectory);
             this.Controls.Add(this.buttonChooseSaveDirectory);
             this.Controls.Add(this.buttonChooseDirectory);
@@ -427,12 +425,15 @@
             this.ShowIcon = false;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Main_Load);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Main_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHBBKLogo)).EndInit();
             this.Bilder_Anzeige.ResumeLayout(false);
             this.Bilder_Anzeige.PerformLayout();
             this.Tool_Panel.ResumeLayout(false);
             this.Tool_Panel.PerformLayout();
+            this.panelDName.ResumeLayout(false);
+            this.panelDName.PerformLayout();
+            this.panelPfad.ResumeLayout(false);
+            this.panelPfad.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Image_Preview)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -453,7 +454,6 @@
         private System.Windows.Forms.Label Label_BHöhe;
         private System.Windows.Forms.Label Label_BBreite;
         private System.Windows.Forms.Label Label_BPfad;
-        private Bunifu.Framework.UI.BunifuThinButton2 Button_Bearbeiten;
         private MonoFlat.Class1.MonoFlat_Label monoFlat_Label2;
         private System.Windows.Forms.Timer timer_focus;
         private Bunifu.Framework.UI.BunifuThinButton2 Button_Löschen;
@@ -465,7 +465,9 @@
         private System.Windows.Forms.TextBox TextBoxID;
         private MonoFlat.Class1.MonoFlat_Label Label_noDirectory;
         private MonoFlat.Class1.MonoFlat_Label LabelNoPics;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label labelCreateTime;
+        private System.Windows.Forms.Panel panelPfad;
+        private System.Windows.Forms.Panel panelDName;
     }
 }
 

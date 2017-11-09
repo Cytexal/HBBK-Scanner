@@ -30,6 +30,7 @@ namespace HBBK_Scanner
         public void RefreshImages()
         {
             imagepaths.Clear();
+            nametopath.Clear();
             Bilder_Anzeige.Controls.Clear();
             try
             {
@@ -70,21 +71,20 @@ namespace HBBK_Scanner
                 Double factor = Convert.ToDouble(Image.FromFile(Variablen.preview_image_path).Width) / Image.FromFile(Variablen.preview_image_path).Height;
                 Image_Preview.Size = new Size(Convert.ToInt32(Image_Preview.Height * factor), Image_Preview.Height);
                 Image_Preview.Image = Image.FromFile(Variablen.preview_image_path);
-                Label_DName.Location = new Point(Image_Preview.Size.Width, Label_DName.Location.Y);
+                panelDName.Location = new Point(Image_Preview.Size.Width, panelDName.Location.Y);
                 Label_BBreite.Location = new Point(Image_Preview.Size.Width, Label_BBreite.Location.Y);
                 Label_BHöhe.Location = new Point(Image_Preview.Size.Width, Label_BHöhe.Location.Y);
-                Button_Bearbeiten.Location = new Point(Image_Preview.Size.Width + 8,Button_Bearbeiten.Location.Y);
                 Button_Löschen.Location = new Point(Image_Preview.Size.Width + 8, Button_Löschen.Location.Y);
                 Label_DName.Text = "Datei-Name: " + ImageUtils.getImageName(firstpath);
                 Label_BBreite.Text = "Bild-Breite: " + Image_Preview.Image.Width + " px";
                 Label_BHöhe.Text = "Bild-Höhe: " + Image_Preview.Image.Height + " px";
                 Label_BPfad.Text = "Pfad: " + firstpath;
-                Variablen.PicsFound = true;
+                labelCreateTime.Text = "Erstelldatum: " + File.GetCreationTime(Variablen.preview_image_path) + " Uhr";
+                labelCreateTime.Location = new Point(Image_Preview.Size.Width,labelCreateTime.Location.Y);
                 LabelNoPics.Hide();
             }
             catch
             {
-                Variablen.PicsFound = false;
                 LabelNoPics.Show();
             }
 
@@ -96,15 +96,16 @@ namespace HBBK_Scanner
             Double factor = Convert.ToDouble(Image.FromFile(Variablen.preview_image_path).Width) / Image.FromFile(Variablen.preview_image_path).Height;
             Image_Preview.Size = new Size(Convert.ToInt32(Image_Preview.Height * factor), Image_Preview.Height);
             Image_Preview.Image = Image.FromFile(Variablen.preview_image_path);
-            Label_DName.Location = new Point(Image_Preview.Size.Width, Label_DName.Location.Y);
+            panelDName.Location = new Point(Image_Preview.Size.Width, panelDName.Location.Y);
             Label_BBreite.Location = new Point(Image_Preview.Size.Width, Label_BBreite.Location.Y);
             Label_BHöhe.Location = new Point(Image_Preview.Size.Width, Label_BHöhe.Location.Y);
             Label_DName.Text = "Datei-Name: " + ((PictureBox)sender).Name;
-            Button_Bearbeiten.Location = new Point(Image_Preview.Size.Width + 8, Button_Bearbeiten.Location.Y);
             Button_Löschen.Location = new Point(Image_Preview.Size.Width + 8, Button_Löschen.Location.Y);
             Label_BBreite.Text = "Bild-Breite: " + Image_Preview.Image.Width + " px";
             Label_BHöhe.Text = "Bild-Höhe: "+ Image_Preview.Image.Height + " px";
             Label_BPfad.Text = "Pfad: " + nametopath[((PictureBox)sender).Name];
+            labelCreateTime.Text = "Erstelldatum: " + File.GetCreationTime(Variablen.preview_image_path) + " Uhr";
+            labelCreateTime.Location = new Point(Image_Preview.Size.Width, labelCreateTime.Location.Y);
         }
 
         private void Main_Load(object sender, EventArgs e)
@@ -122,7 +123,7 @@ namespace HBBK_Scanner
                 Variablen.path = Image_Directionary.SelectedPath;
                 Label_Willkommen.Hide();
 
-                Label_Verzeichnis.Text = "Verzeichnis: " + Variablen.path;
+                Label_Verzeichnis.Text = "Verzeichnis: " + Variablen.path + @"\";
                 Label_Verzeichnis.Location = new Point(path_Label.X - Label_Verzeichnis.Size.Width, Label_Verzeichnis.Location.Y);
                 Label_Verzeichnis.Show();
 
@@ -151,14 +152,6 @@ namespace HBBK_Scanner
         private void timer_focus_Tick(object sender, EventArgs e)
         {
             TextBoxID.Select();
-        }
-
-        private void TB_Hidden_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void Button_Bearbeiten_Click(object sender, EventArgs e)
-        {
         }
 
         private void buttonChooseSaveDirectory_Click(object sender, EventArgs e)
@@ -242,7 +235,16 @@ namespace HBBK_Scanner
             else
             {
                 TextBoxID.Text = "";
-                buttonChooseSaveDirectory_Click(sender, e);
+                if (folderBrowserDialogSaveDirectory.ShowDialog() == DialogResult.OK)
+                {
+                    Variablen.SavePath = folderBrowserDialogSaveDirectory.SelectedPath;
+                    Label_Speicherort.Text = "Verzeichnis: " + Variablen.SavePath + @"\";
+                    Image img = Image.FromFile(Variablen.preview_image_path);
+                    Bitmap bmp = new Bitmap(img, 100, 150);
+                    img = bmp;
+                    SaveImage(img);
+                }
+
             }          
         }
 
@@ -303,15 +305,16 @@ namespace HBBK_Scanner
             Double factor = Convert.ToDouble(Image.FromFile(Variablen.preview_image_path).Width) / Image.FromFile(Variablen.preview_image_path).Height;
             Image_Preview.Size = new Size(Convert.ToInt32(Image_Preview.Height * factor), Image_Preview.Height);
             Image_Preview.Image = Image.FromFile(Variablen.preview_image_path);
-            Label_DName.Location = new Point(Image_Preview.Size.Width, Label_DName.Location.Y);
+            panelDName.Location = new Point(Image_Preview.Size.Width, panelDName.Location.Y);
             Label_BBreite.Location = new Point(Image_Preview.Size.Width, Label_BBreite.Location.Y);
             Label_BHöhe.Location = new Point(Image_Preview.Size.Width, Label_BHöhe.Location.Y);
             Label_DName.Text = "Datei-Name: " + ImageUtils.getImageName(path);
-            Button_Bearbeiten.Location = new Point(Image_Preview.Size.Width + 8, Button_Bearbeiten.Location.Y);
             Button_Löschen.Location = new Point(Image_Preview.Size.Width + 8, Button_Löschen.Location.Y);
             Label_BBreite.Text = "Bild-Breite: " + Image_Preview.Image.Width + " px";
             Label_BHöhe.Text = "Bild-Höhe: " + Image_Preview.Image.Height + " px";
             Label_BPfad.Text = "Pfad: " + path;
+            labelCreateTime.Text = "Erstelldatum: " + File.GetCreationTime(Variablen.preview_image_path) + " Uhr";
+            labelCreateTime.Location = new Point(Image_Preview.Size.Width, labelCreateTime.Location.Y);
         }
 
 
@@ -319,10 +322,6 @@ namespace HBBK_Scanner
         {
             timerSave.Enabled = false;
             timerSave.Enabled = true;
-        }
-
-        private void Main_KeyPress(object sender, KeyPressEventArgs e)
-        {
         }
 
         private void Button_Löschen_Click(object sender, EventArgs e)
@@ -379,11 +378,6 @@ namespace HBBK_Scanner
             {
 
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show(Variablen.PicsFound.ToString());
         }
     }
 }
