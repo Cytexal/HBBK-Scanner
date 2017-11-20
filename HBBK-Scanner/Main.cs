@@ -180,8 +180,6 @@ namespace HBBK_Scanner
 
         private void TextBox_Hidden_KeyPress(object sender, KeyPressEventArgs e)
         {
-            timerSave.Enabled = false;
-            timerSave.Enabled = true;
             e.Handled = true;
         }
 
@@ -197,7 +195,6 @@ namespace HBBK_Scanner
 
         private void timerSave_Tick(object sender, EventArgs e)
         {
-            timerSave.Enabled = false;
             //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++Save
             if (Variablen.SavePath != null)
             {
@@ -320,8 +317,6 @@ namespace HBBK_Scanner
 
         private void TextBoxID_KeyPress(object sender, KeyPressEventArgs e)
         {
-            timerSave.Enabled = false;
-            timerSave.Enabled = true;
         }
 
         private void Button_Löschen_Click(object sender, EventArgs e)
@@ -377,6 +372,82 @@ namespace HBBK_Scanner
             catch
             {
 
+            }
+        }
+
+        private void Main_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+
+        }
+
+        private void timer_textbox_Tick(object sender, EventArgs e)
+        {
+            if(TextBoxID.Focused)
+            {
+                TextBoxID.BackColor = Color.LimeGreen;
+            }
+            else
+            {
+                TextBoxID.BackColor = Color.IndianRed;
+            }
+        }
+
+        private void TextBoxID_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                if (Variablen.SavePath != null)
+                {
+                    try
+                    {
+                        Image img = Image.FromFile(Variablen.preview_image_path);
+                        Bitmap bmp = new Bitmap(img, 100, 150);
+                        img = bmp;
+                        if (!File.Exists(Variablen.SavePath + @"\" + TextBoxID.Text + ".jpg"))
+                        {
+                            SaveImage(img);
+                        }
+                        else
+                        {
+                            DialogResult dialogResult = MessageBox.Show("Im ausgewählten Verzeichnis befindet sich bereits eine Datei mit der selben ID. " +
+                                "Möchten sie die Datei überschreiben? ", "Duplikat gefunden", MessageBoxButtons.YesNo);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                SaveImage(img);
+                            }
+                            else if (dialogResult == DialogResult.No)
+                            {
+
+                            }
+                        }
+                        TextBoxID.Text = "";
+
+
+                    }
+                    catch
+                    {
+
+                    }
+                }
+                else
+                {
+                    TextBoxID.Text = "";
+                    if (folderBrowserDialogSaveDirectory.ShowDialog() == DialogResult.OK)
+                    {
+                        Variablen.SavePath = folderBrowserDialogSaveDirectory.SelectedPath;
+                            Variablen.SavePath = folderBrowserDialogSaveDirectory.SelectedPath;
+                            Label_Speicherort.Text = "Verzeichnis: " + Variablen.SavePath + @"\";
+                            Label_Speicherort.Location = new Point(path_Label.X - Label_Speicherort.Size.Width, Label_Speicherort.Location.Y);
+                         buttonChooseSaveDirectory.Location = new Point(Label_Speicherort.Location.X - buttonChooseSaveDirectory.Width - 10, buttonChooseSaveDirectory.Location.Y);
+                         Label_noDirectory.Hide();
+                        Label_Speicherort.Text = "Verzeichnis: " + Variablen.SavePath + @"\";
+                        Image img = Image.FromFile(Variablen.preview_image_path);
+                        Bitmap bmp = new Bitmap(img, 100, 150);
+                        img = bmp;
+                        SaveImage(img);
+                    }
+
+                }
             }
         }
     }

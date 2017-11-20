@@ -50,13 +50,12 @@
             this.Label_BHöhe = new System.Windows.Forms.Label();
             this.Label_BBreite = new System.Windows.Forms.Label();
             this.Image_Preview = new System.Windows.Forms.PictureBox();
-            this.timer_focus = new System.Windows.Forms.Timer(this.components);
             this.Label_Speicherort = new MonoFlat.Class1.MonoFlat_Label();
             this.buttonChooseDirectory = new System.Windows.Forms.Button();
             this.buttonChooseSaveDirectory = new System.Windows.Forms.Button();
             this.folderBrowserDialogSaveDirectory = new System.Windows.Forms.FolderBrowserDialog();
-            this.timerSave = new System.Windows.Forms.Timer(this.components);
             this.Label_noDirectory = new MonoFlat.Class1.MonoFlat_Label();
+            this.timer_textbox = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHBBKLogo)).BeginInit();
             this.Bilder_Anzeige.SuspendLayout();
             this.Tool_Panel.SuspendLayout();
@@ -207,7 +206,7 @@
             this.panelDName.Controls.Add(this.Label_DName);
             this.panelDName.Location = new System.Drawing.Point(508, 13);
             this.panelDName.Name = "panelDName";
-            this.panelDName.Size = new System.Drawing.Size(397, 54);
+            this.panelDName.Size = new System.Drawing.Size(437, 54);
             this.panelDName.TabIndex = 17;
             // 
             // Label_DName
@@ -228,7 +227,7 @@
             this.panelPfad.Controls.Add(this.Label_BPfad);
             this.panelPfad.Location = new System.Drawing.Point(10, 680);
             this.panelPfad.Name = "panelPfad";
-            this.panelPfad.Size = new System.Drawing.Size(886, 59);
+            this.panelPfad.Size = new System.Drawing.Size(926, 59);
             this.panelPfad.TabIndex = 16;
             // 
             // Label_BPfad
@@ -253,11 +252,13 @@
             // 
             // TextBoxID
             // 
-            this.TextBoxID.Location = new System.Drawing.Point(10, 746);
+            this.TextBoxID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TextBoxID.Location = new System.Drawing.Point(653, 464);
             this.TextBoxID.Name = "TextBoxID";
             this.TextBoxID.Size = new System.Drawing.Size(286, 20);
             this.TextBoxID.TabIndex = 14;
             this.TextBoxID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxID_KeyPress);
+            this.TextBoxID.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.TextBoxID_PreviewKeyDown);
             // 
             // Button_Löschen
             // 
@@ -294,11 +295,13 @@
             this.monoFlat_Label2.BackColor = System.Drawing.Color.Transparent;
             this.monoFlat_Label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.monoFlat_Label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(125)))), ((int)(((byte)(132)))));
-            this.monoFlat_Label2.Location = new System.Drawing.Point(621, 497);
+            this.monoFlat_Label2.Location = new System.Drawing.Point(620, 496);
             this.monoFlat_Label2.Name = "monoFlat_Label2";
-            this.monoFlat_Label2.Size = new System.Drawing.Size(351, 50);
+            this.monoFlat_Label2.Size = new System.Drawing.Size(378, 100);
             this.monoFlat_Label2.TabIndex = 10;
-            this.monoFlat_Label2.Text = "       Scannen Sie jetzt den Barcode,\r\num das Bild unter seiner ID zu speichern";
+            this.monoFlat_Label2.Text = "             Fokusieren Sie die Textbox\r\n             und Scannen den Barcode.\r\nD" +
+    "ie Bereitschaft des Scanners erkennen Sie \r\n   an der grünen Einfärbung der Text" +
+    "box";
             // 
             // Label_BHöhe
             // 
@@ -331,12 +334,6 @@
             this.Image_Preview.TabIndex = 0;
             this.Image_Preview.TabStop = false;
             this.Image_Preview.Visible = false;
-            // 
-            // timer_focus
-            // 
-            this.timer_focus.Enabled = true;
-            this.timer_focus.Interval = 1000;
-            this.timer_focus.Tick += new System.EventHandler(this.timer_focus_Tick);
             // 
             // Label_Speicherort
             // 
@@ -384,11 +381,6 @@
             // 
             this.folderBrowserDialogSaveDirectory.Description = "Wählen Sie den Speicherort aus.";
             // 
-            // timerSave
-            // 
-            this.timerSave.Interval = 50;
-            this.timerSave.Tick += new System.EventHandler(this.timerSave_Tick);
-            // 
             // Label_noDirectory
             // 
             this.Label_noDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -404,6 +396,12 @@
             this.Label_noDirectory.TabIndex = 13;
             this.Label_noDirectory.Text = "Kein Speicherort ausgewählt!";
             this.Label_noDirectory.Visible = false;
+            // 
+            // timer_textbox
+            // 
+            this.timer_textbox.Enabled = true;
+            this.timer_textbox.Interval = 3;
+            this.timer_textbox.Tick += new System.EventHandler(this.timer_textbox_Tick);
             // 
             // Main
             // 
@@ -425,6 +423,7 @@
             this.ShowIcon = false;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Main_Load);
+            this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.Main_PreviewKeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHBBKLogo)).EndInit();
             this.Bilder_Anzeige.ResumeLayout(false);
             this.Bilder_Anzeige.PerformLayout();
@@ -455,19 +454,18 @@
         private System.Windows.Forms.Label Label_BBreite;
         private System.Windows.Forms.Label Label_BPfad;
         private MonoFlat.Class1.MonoFlat_Label monoFlat_Label2;
-        private System.Windows.Forms.Timer timer_focus;
         private Bunifu.Framework.UI.BunifuThinButton2 Button_Löschen;
         private MonoFlat.Class1.MonoFlat_Label Label_Speicherort;
         private System.Windows.Forms.Button buttonChooseDirectory;
         private System.Windows.Forms.Button buttonChooseSaveDirectory;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogSaveDirectory;
-        private System.Windows.Forms.Timer timerSave;
         private System.Windows.Forms.TextBox TextBoxID;
         private MonoFlat.Class1.MonoFlat_Label Label_noDirectory;
         private MonoFlat.Class1.MonoFlat_Label LabelNoPics;
         private System.Windows.Forms.Label labelCreateTime;
         private System.Windows.Forms.Panel panelPfad;
         private System.Windows.Forms.Panel panelDName;
+        private System.Windows.Forms.Timer timer_textbox;
     }
 }
 
