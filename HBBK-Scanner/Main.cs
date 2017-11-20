@@ -216,11 +216,6 @@ namespace HBBK_Scanner
             labelCreateTime.Location = new Point(Image_Preview.Size.Width, labelCreateTime.Location.Y);
         }
 
-
-        private void TextBoxID_KeyPress(object sender, KeyPressEventArgs e)
-        {
-        }
-
         private void Button_Löschen_Click(object sender, EventArgs e)
         {
             string RightNow = Variablen.preview_image_path;

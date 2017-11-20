@@ -257,7 +257,6 @@
             this.TextBoxID.Name = "TextBoxID";
             this.TextBoxID.Size = new System.Drawing.Size(286, 20);
             this.TextBoxID.TabIndex = 14;
-            this.TextBoxID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxID_KeyPress);
             this.TextBoxID.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.TextBoxID_PreviewKeyDown);
             // 
             // Button_Löschen
