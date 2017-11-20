@@ -34,7 +34,7 @@
             this.Image_Directionary = new System.Windows.Forms.FolderBrowserDialog();
             this.monoFlat_LabelTitel = new MonoFlat.Class1.MonoFlat_Label();
             this.pictureBoxHBBKLogo = new System.Windows.Forms.PictureBox();
-            this.Button_Directory = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.Button_Start = new Bunifu.Framework.UI.BunifuThinButton2();
             this.Label_Verzeichnis = new MonoFlat.Class1.MonoFlat_Label();
             this.Bilder_Anzeige = new System.Windows.Forms.FlowLayoutPanel();
             this.LabelNoPics = new MonoFlat.Class1.MonoFlat_Label();
@@ -56,12 +56,22 @@
             this.folderBrowserDialogSaveDirectory = new System.Windows.Forms.FolderBrowserDialog();
             this.Label_noDirectory = new MonoFlat.Class1.MonoFlat_Label();
             this.timer_textbox = new System.Windows.Forms.Timer(this.components);
+            this.checkBox_Speichergröße = new System.Windows.Forms.CheckBox();
+            this.panelSettings = new System.Windows.Forms.Panel();
+            this.numericUpDownSaveWidth = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownSaveHeight = new System.Windows.Forms.NumericUpDown();
+            this.labelSpeichergröße = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHBBKLogo)).BeginInit();
             this.Bilder_Anzeige.SuspendLayout();
             this.Tool_Panel.SuspendLayout();
             this.panelDName.SuspendLayout();
             this.panelPfad.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Image_Preview)).BeginInit();
+            this.panelSettings.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSaveWidth)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSaveHeight)).BeginInit();
             this.SuspendLayout();
             // 
             // Label_Willkommen
@@ -108,31 +118,31 @@
             this.pictureBoxHBBKLogo.TabIndex = 6;
             this.pictureBoxHBBKLogo.TabStop = false;
             // 
-            // Button_Directory
+            // Button_Start
             // 
-            this.Button_Directory.ActiveBorderThickness = 1;
-            this.Button_Directory.ActiveCornerRadius = 20;
-            this.Button_Directory.ActiveFillColor = System.Drawing.Color.Honeydew;
-            this.Button_Directory.ActiveForecolor = System.Drawing.Color.SeaGreen;
-            this.Button_Directory.ActiveLineColor = System.Drawing.Color.SeaGreen;
-            this.Button_Directory.BackColor = System.Drawing.SystemColors.Control;
-            this.Button_Directory.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Button_Directory.BackgroundImage")));
-            this.Button_Directory.ButtonText = "Verzeichnis wählen";
-            this.Button_Directory.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Button_Directory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Button_Directory.ForeColor = System.Drawing.Color.SeaGreen;
-            this.Button_Directory.IdleBorderThickness = 1;
-            this.Button_Directory.IdleCornerRadius = 20;
-            this.Button_Directory.IdleFillColor = System.Drawing.Color.SeaGreen;
-            this.Button_Directory.IdleForecolor = System.Drawing.Color.Honeydew;
-            this.Button_Directory.IdleLineColor = System.Drawing.Color.SeaGreen;
-            this.Button_Directory.Location = new System.Drawing.Point(437, 362);
-            this.Button_Directory.Margin = new System.Windows.Forms.Padding(5);
-            this.Button_Directory.Name = "Button_Directory";
-            this.Button_Directory.Size = new System.Drawing.Size(227, 66);
-            this.Button_Directory.TabIndex = 4;
-            this.Button_Directory.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Button_Directory.Click += new System.EventHandler(this.Button_Directory_Click);
+            this.Button_Start.ActiveBorderThickness = 1;
+            this.Button_Start.ActiveCornerRadius = 20;
+            this.Button_Start.ActiveFillColor = System.Drawing.Color.Honeydew;
+            this.Button_Start.ActiveForecolor = System.Drawing.Color.SeaGreen;
+            this.Button_Start.ActiveLineColor = System.Drawing.Color.SeaGreen;
+            this.Button_Start.BackColor = System.Drawing.SystemColors.Control;
+            this.Button_Start.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Button_Start.BackgroundImage")));
+            this.Button_Start.ButtonText = "Verzeichnis wählen";
+            this.Button_Start.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_Start.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Button_Start.ForeColor = System.Drawing.Color.SeaGreen;
+            this.Button_Start.IdleBorderThickness = 1;
+            this.Button_Start.IdleCornerRadius = 20;
+            this.Button_Start.IdleFillColor = System.Drawing.Color.SeaGreen;
+            this.Button_Start.IdleForecolor = System.Drawing.Color.Honeydew;
+            this.Button_Start.IdleLineColor = System.Drawing.Color.SeaGreen;
+            this.Button_Start.Location = new System.Drawing.Point(437, 362);
+            this.Button_Start.Margin = new System.Windows.Forms.Padding(5);
+            this.Button_Start.Name = "Button_Start";
+            this.Button_Start.Size = new System.Drawing.Size(227, 66);
+            this.Button_Start.TabIndex = 4;
+            this.Button_Start.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Button_Start.Click += new System.EventHandler(this.Button_Directory_Click);
             // 
             // Label_Verzeichnis
             // 
@@ -206,7 +216,7 @@
             this.panelDName.Controls.Add(this.Label_DName);
             this.panelDName.Location = new System.Drawing.Point(508, 13);
             this.panelDName.Name = "panelDName";
-            this.panelDName.Size = new System.Drawing.Size(437, 54);
+            this.panelDName.Size = new System.Drawing.Size(517, 54);
             this.panelDName.TabIndex = 17;
             // 
             // Label_DName
@@ -227,7 +237,7 @@
             this.panelPfad.Controls.Add(this.Label_BPfad);
             this.panelPfad.Location = new System.Drawing.Point(10, 680);
             this.panelPfad.Name = "panelPfad";
-            this.panelPfad.Size = new System.Drawing.Size(926, 59);
+            this.panelPfad.Size = new System.Drawing.Size(1006, 59);
             this.panelPfad.TabIndex = 16;
             // 
             // Label_BPfad
@@ -402,11 +412,103 @@
             this.timer_textbox.Interval = 3;
             this.timer_textbox.Tick += new System.EventHandler(this.timer_textbox_Tick);
             // 
+            // checkBox_Speichergröße
+            // 
+            this.checkBox_Speichergröße.AutoSize = true;
+            this.checkBox_Speichergröße.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox_Speichergröße.Location = new System.Drawing.Point(458, 58);
+            this.checkBox_Speichergröße.Name = "checkBox_Speichergröße";
+            this.checkBox_Speichergröße.Size = new System.Drawing.Size(100, 17);
+            this.checkBox_Speichergröße.TabIndex = 14;
+            this.checkBox_Speichergröße.Text = "Speichergröße";
+            this.checkBox_Speichergröße.UseVisualStyleBackColor = true;
+            this.checkBox_Speichergröße.CheckedChanged += new System.EventHandler(this.checkBox_Einstellungen_CheckedChanged);
+            // 
+            // panelSettings
+            // 
+            this.panelSettings.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelSettings.Controls.Add(this.label3);
+            this.panelSettings.Controls.Add(this.label2);
+            this.panelSettings.Controls.Add(this.labelSpeichergröße);
+            this.panelSettings.Controls.Add(this.numericUpDownSaveHeight);
+            this.panelSettings.Controls.Add(this.numericUpDownSaveWidth);
+            this.panelSettings.Location = new System.Drawing.Point(555, 7);
+            this.panelSettings.Name = "panelSettings";
+            this.panelSettings.Size = new System.Drawing.Size(106, 68);
+            this.panelSettings.TabIndex = 15;
+            this.panelSettings.Visible = false;
+            // 
+            // numericUpDownSaveWidth
+            // 
+            this.numericUpDownSaveWidth.Location = new System.Drawing.Point(46, 21);
+            this.numericUpDownSaveWidth.Maximum = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
+            this.numericUpDownSaveWidth.Name = "numericUpDownSaveWidth";
+            this.numericUpDownSaveWidth.Size = new System.Drawing.Size(47, 20);
+            this.numericUpDownSaveWidth.TabIndex = 0;
+            this.numericUpDownSaveWidth.Value = new decimal(new int[] {
+            369,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDownSaveHeight
+            // 
+            this.numericUpDownSaveHeight.Location = new System.Drawing.Point(46, 38);
+            this.numericUpDownSaveHeight.Maximum = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
+            this.numericUpDownSaveHeight.Name = "numericUpDownSaveHeight";
+            this.numericUpDownSaveHeight.Size = new System.Drawing.Size(47, 20);
+            this.numericUpDownSaveHeight.TabIndex = 1;
+            this.numericUpDownSaveHeight.Value = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            // 
+            // labelSpeichergröße
+            // 
+            this.labelSpeichergröße.AutoSize = true;
+            this.labelSpeichergröße.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSpeichergröße.Location = new System.Drawing.Point(2, 5);
+            this.labelSpeichergröße.Name = "labelSpeichergröße";
+            this.labelSpeichergröße.Size = new System.Drawing.Size(84, 13);
+            this.labelSpeichergröße.TabIndex = 2;
+            this.labelSpeichergröße.Text = "Speichergröße:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(2, 23);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(40, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Breite:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(2, 40);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(38, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Höhe:";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1473, 878);
+            this.Controls.Add(this.panelSettings);
+            this.Controls.Add(this.checkBox_Speichergröße);
             this.Controls.Add(this.Label_noDirectory);
             this.Controls.Add(this.buttonChooseSaveDirectory);
             this.Controls.Add(this.buttonChooseDirectory);
@@ -416,7 +518,7 @@
             this.Controls.Add(this.Label_Verzeichnis);
             this.Controls.Add(this.pictureBoxHBBKLogo);
             this.Controls.Add(this.monoFlat_LabelTitel);
-            this.Controls.Add(this.Button_Directory);
+            this.Controls.Add(this.Button_Start);
             this.Controls.Add(this.Label_Willkommen);
             this.Name = "Main";
             this.ShowIcon = false;
@@ -432,6 +534,10 @@
             this.panelPfad.ResumeLayout(false);
             this.panelPfad.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Image_Preview)).EndInit();
+            this.panelSettings.ResumeLayout(false);
+            this.panelSettings.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSaveWidth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSaveHeight)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -439,7 +545,7 @@
 
         #endregion
         private MonoFlat.Class1.MonoFlat_Label Label_Willkommen;
-        private Bunifu.Framework.UI.BunifuThinButton2 Button_Directory;
+        private Bunifu.Framework.UI.BunifuThinButton2 Button_Start;
         private System.Windows.Forms.FolderBrowserDialog Image_Directionary;
         private MonoFlat.Class1.MonoFlat_Label monoFlat_LabelTitel;
         private System.Windows.Forms.PictureBox pictureBoxHBBKLogo;
@@ -464,6 +570,13 @@
         private System.Windows.Forms.Panel panelPfad;
         private System.Windows.Forms.Panel panelDName;
         private System.Windows.Forms.Timer timer_textbox;
+        private System.Windows.Forms.CheckBox checkBox_Speichergröße;
+        private System.Windows.Forms.Panel panelSettings;
+        private System.Windows.Forms.NumericUpDown numericUpDownSaveHeight;
+        private System.Windows.Forms.NumericUpDown numericUpDownSaveWidth;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelSpeichergröße;
     }
 }
 
