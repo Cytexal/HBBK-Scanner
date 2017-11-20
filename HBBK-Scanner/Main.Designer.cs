@@ -423,7 +423,6 @@
             this.ShowIcon = false;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Main_Load);
-            this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.Main_PreviewKeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHBBKLogo)).EndInit();
             this.Bilder_Anzeige.ResumeLayout(false);
             this.Bilder_Anzeige.PerformLayout();

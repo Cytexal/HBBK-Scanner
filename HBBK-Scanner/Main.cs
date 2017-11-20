@@ -67,20 +67,7 @@ namespace HBBK_Scanner
             }
 
 
-                Variablen.preview_image_path = firstpath;
-                Double factor = Convert.ToDouble(Image.FromFile(Variablen.preview_image_path).Width) / Image.FromFile(Variablen.preview_image_path).Height;
-                Image_Preview.Size = new Size(Convert.ToInt32(Image_Preview.Height * factor), Image_Preview.Height);
-                Image_Preview.Image = Image.FromFile(Variablen.preview_image_path);
-                panelDName.Location = new Point(Image_Preview.Size.Width, panelDName.Location.Y);
-                Label_BBreite.Location = new Point(Image_Preview.Size.Width, Label_BBreite.Location.Y);
-                Label_BHöhe.Location = new Point(Image_Preview.Size.Width, Label_BHöhe.Location.Y);
-                Button_Löschen.Location = new Point(Image_Preview.Size.Width + 8, Button_Löschen.Location.Y);
-                Label_DName.Text = "Datei-Name: " + ImageUtils.getImageName(firstpath);
-                Label_BBreite.Text = "Bild-Breite: " + Image_Preview.Image.Width + " px";
-                Label_BHöhe.Text = "Bild-Höhe: " + Image_Preview.Image.Height + " px";
-                Label_BPfad.Text = "Pfad: " + firstpath;
-                labelCreateTime.Text = "Erstelldatum: " + File.GetCreationTime(Variablen.preview_image_path) + " Uhr";
-                labelCreateTime.Location = new Point(Image_Preview.Size.Width,labelCreateTime.Location.Y);
+                UpdatePreviewImage(firstpath);
                 LabelNoPics.Hide();
             }
             catch
@@ -92,20 +79,7 @@ namespace HBBK_Scanner
 
         private void Image_Click(object sender, EventArgs e)
         {
-            Variablen.preview_image_path = nametopath[((PictureBox)sender).Name];
-            Double factor = Convert.ToDouble(Image.FromFile(Variablen.preview_image_path).Width) / Image.FromFile(Variablen.preview_image_path).Height;
-            Image_Preview.Size = new Size(Convert.ToInt32(Image_Preview.Height * factor), Image_Preview.Height);
-            Image_Preview.Image = Image.FromFile(Variablen.preview_image_path);
-            panelDName.Location = new Point(Image_Preview.Size.Width, panelDName.Location.Y);
-            Label_BBreite.Location = new Point(Image_Preview.Size.Width, Label_BBreite.Location.Y);
-            Label_BHöhe.Location = new Point(Image_Preview.Size.Width, Label_BHöhe.Location.Y);
-            Label_DName.Text = "Datei-Name: " + ((PictureBox)sender).Name;
-            Button_Löschen.Location = new Point(Image_Preview.Size.Width + 8, Button_Löschen.Location.Y);
-            Label_BBreite.Text = "Bild-Breite: " + Image_Preview.Image.Width + " px";
-            Label_BHöhe.Text = "Bild-Höhe: "+ Image_Preview.Image.Height + " px";
-            Label_BPfad.Text = "Pfad: " + nametopath[((PictureBox)sender).Name];
-            labelCreateTime.Text = "Erstelldatum: " + File.GetCreationTime(Variablen.preview_image_path) + " Uhr";
-            labelCreateTime.Location = new Point(Image_Preview.Size.Width, labelCreateTime.Location.Y);
+            UpdatePreviewImage(nametopath[((PictureBox)sender).Name]);
         }
 
         private void Main_Load(object sender, EventArgs e)
@@ -193,58 +167,6 @@ namespace HBBK_Scanner
             return null;
         }
 
-        private void timerSave_Tick(object sender, EventArgs e)
-        {
-            //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++Save
-            if (Variablen.SavePath != null)
-            {
-                try
-                {
-                    Image img = Image.FromFile(Variablen.preview_image_path);
-                    Bitmap bmp = new Bitmap(img, 100, 150);
-                    img = bmp;
-                    if (!File.Exists(Variablen.SavePath + @"\" + TextBoxID.Text + ".jpg"))
-                    {
-                        SaveImage(img);
-                    }
-                    else
-                    {
-                        DialogResult dialogResult = MessageBox.Show("Im ausgewählten Verzeichnis befindet sich bereits eine Datei mit der selben ID. " +
-                            "Möchten sie die Datei überschreiben? ","Duplikat gefunden",MessageBoxButtons.YesNo);
-                        if (dialogResult == DialogResult.Yes)
-                        {
-                            SaveImage(img);
-                        }
-                        else if (dialogResult == DialogResult.No)
-                        {
-                            
-                        }
-                    }
-                    TextBoxID.Text = "";
-
-
-                }
-                catch
-                {
-                    
-                }
-            }
-            else
-            {
-                TextBoxID.Text = "";
-                if (folderBrowserDialogSaveDirectory.ShowDialog() == DialogResult.OK)
-                {
-                    Variablen.SavePath = folderBrowserDialogSaveDirectory.SelectedPath;
-                    Label_Speicherort.Text = "Verzeichnis: " + Variablen.SavePath + @"\";
-                    Image img = Image.FromFile(Variablen.preview_image_path);
-                    Bitmap bmp = new Bitmap(img, 100, 150);
-                    img = bmp;
-                    SaveImage(img);
-                }
-
-            }          
-        }
-
         public void SaveImage(Image img)
         {
             img.Save(Variablen.SavePath + @"\" + TextBoxID.Text + ".jpg");
@@ -258,27 +180,7 @@ namespace HBBK_Scanner
                 Bilder_Anzeige.Controls.Remove(GetControlByName(ImageUtils.getImageName(paths[index])));
                 if (paths.Count == 1)
                 {
-                    Label_Willkommen.Show();
-
-                    Label_Verzeichnis.Hide();
-
-                    Label_Speicherort.Hide();
-
-
-                    buttonChooseDirectory.Hide();
-
-
-                    buttonChooseSaveDirectory.Hide();
-
-
-                    Label_noDirectory.Hide();
-
-
-                    Bilder_Anzeige.Hide();
-                    Button_Directory.Show();
-                    Tool_Panel.Hide();
-                    Image_Preview.Hide();
-
+                    SetLabel();
                 }
                 else
                 {
@@ -331,27 +233,7 @@ namespace HBBK_Scanner
                 Bilder_Anzeige.Controls.Remove(GetControlByName(ImageUtils.getImageName(paths[index])));
                 if (paths.Count == 1)
                 {
-                    Label_Willkommen.Show();
-
-                    Label_Verzeichnis.Hide();
-
-                    Label_Speicherort.Hide();
-
-
-                    buttonChooseDirectory.Hide();
-
-
-                    buttonChooseSaveDirectory.Hide();
-
-
-                    Label_noDirectory.Hide();
-
-
-                    Bilder_Anzeige.Hide();
-                    Button_Directory.Show();
-                    Tool_Panel.Hide();
-                    Image_Preview.Hide();
-
+                    SetLabel();
                 }
                 else
                 {
@@ -375,11 +257,6 @@ namespace HBBK_Scanner
             }
         }
 
-        private void Main_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
-        {
-
-        }
-
         private void timer_textbox_Tick(object sender, EventArgs e)
         {
             if(TextBoxID.Focused)
@@ -394,61 +271,78 @@ namespace HBBK_Scanner
 
         private void TextBoxID_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
-                if (Variablen.SavePath != null)
+                StartSave();
+            }
+        }
+
+        private void StartSave()
+        {
+            if (Variablen.SavePath != null)
+            {
+                try
                 {
-                    try
+                    Image img = Image.FromFile(Variablen.preview_image_path);
+                    Bitmap bmp = new Bitmap(img, 100, 150);
+                    img = bmp;
+                    if (!File.Exists(Variablen.SavePath + @"\" + TextBoxID.Text + ".jpg"))
                     {
-                        Image img = Image.FromFile(Variablen.preview_image_path);
-                        Bitmap bmp = new Bitmap(img, 100, 150);
-                        img = bmp;
-                        if (!File.Exists(Variablen.SavePath + @"\" + TextBoxID.Text + ".jpg"))
+                        SaveImage(img);
+                    }
+                    else
+                    {
+                        DialogResult dialogResult = MessageBox.Show("Im ausgewählten Verzeichnis befindet sich bereits eine Datei mit der selben ID. " +
+                            "Möchten sie die Datei überschreiben? ", "Duplikat gefunden", MessageBoxButtons.YesNo);
+                        if (dialogResult == DialogResult.Yes)
                         {
                             SaveImage(img);
                         }
-                        else
+                        else if (dialogResult == DialogResult.No)
                         {
-                            DialogResult dialogResult = MessageBox.Show("Im ausgewählten Verzeichnis befindet sich bereits eine Datei mit der selben ID. " +
-                                "Möchten sie die Datei überschreiben? ", "Duplikat gefunden", MessageBoxButtons.YesNo);
-                            if (dialogResult == DialogResult.Yes)
-                            {
-                                SaveImage(img);
-                            }
-                            else if (dialogResult == DialogResult.No)
-                            {
 
-                            }
                         }
-                        TextBoxID.Text = "";
-
-
                     }
-                    catch
-                    {
-
-                    }
-                }
-                else
-                {
                     TextBoxID.Text = "";
-                    if (folderBrowserDialogSaveDirectory.ShowDialog() == DialogResult.OK)
-                    {
-                        Variablen.SavePath = folderBrowserDialogSaveDirectory.SelectedPath;
-                            Variablen.SavePath = folderBrowserDialogSaveDirectory.SelectedPath;
-                            Label_Speicherort.Text = "Verzeichnis: " + Variablen.SavePath + @"\";
-                            Label_Speicherort.Location = new Point(path_Label.X - Label_Speicherort.Size.Width, Label_Speicherort.Location.Y);
-                         buttonChooseSaveDirectory.Location = new Point(Label_Speicherort.Location.X - buttonChooseSaveDirectory.Width - 10, buttonChooseSaveDirectory.Location.Y);
-                         Label_noDirectory.Hide();
-                        Label_Speicherort.Text = "Verzeichnis: " + Variablen.SavePath + @"\";
-                        Image img = Image.FromFile(Variablen.preview_image_path);
-                        Bitmap bmp = new Bitmap(img, 100, 150);
-                        img = bmp;
-                        SaveImage(img);
-                    }
+                }
+                catch
+                {
 
                 }
             }
+            else
+            {
+                TextBoxID.Text = "";
+                if (folderBrowserDialogSaveDirectory.ShowDialog() == DialogResult.OK)
+                {
+                    Variablen.SavePath = folderBrowserDialogSaveDirectory.SelectedPath;
+                    Variablen.SavePath = folderBrowserDialogSaveDirectory.SelectedPath;
+                    Label_Speicherort.Text = "Verzeichnis: " + Variablen.SavePath + @"\";
+                    Label_Speicherort.Location = new Point(path_Label.X - Label_Speicherort.Size.Width, Label_Speicherort.Location.Y);
+                    buttonChooseSaveDirectory.Location = new Point(Label_Speicherort.Location.X - buttonChooseSaveDirectory.Width - 10, buttonChooseSaveDirectory.Location.Y);
+                    Label_noDirectory.Hide();
+                    Label_Speicherort.Text = "Verzeichnis: " + Variablen.SavePath + @"\";
+                    Image img = Image.FromFile(Variablen.preview_image_path);
+                    Bitmap bmp = new Bitmap(img, 100, 150);
+                    img = bmp;
+                    SaveImage(img);
+                }
+
+            }
+        }
+
+        private void SetLabel()
+        {
+            Label_Willkommen.Show();
+            Label_Verzeichnis.Hide();
+            Label_Speicherort.Hide();
+            buttonChooseDirectory.Hide();
+            buttonChooseSaveDirectory.Hide();
+            Label_noDirectory.Hide();
+            Bilder_Anzeige.Hide();
+            Button_Directory.Show();
+            Tool_Panel.Hide();
+            Image_Preview.Hide();
         }
     }
 }

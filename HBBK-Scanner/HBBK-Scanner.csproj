@@ -34,13 +34,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bunifu_UI_v1.5.3">
-      <HintPath>..\..\..\..\Desktop\Schule-C#\Designs\Designes\DLLs\Bunifu_UI_v1.5.3.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\Designs\Bunifu_UI_v1.5.3.dll</HintPath>
     </Reference>
     <Reference Include="MetroFramework">
-      <HintPath>..\..\..\..\Desktop\Schule-C#\Designs\Designes\DLLs\MetroFramework.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\Designs\MetroFramework.dll</HintPath>
     </Reference>
     <Reference Include="MonoFlat">
-      <HintPath>..\..\..\..\Desktop\Schule-C#\Designs\Designes\DLLs\MonoFlat.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\Designs\MonoFlat.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
