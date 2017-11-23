@@ -72,9 +72,10 @@ namespace HBBK_Scanner
             }
             catch
             {
+                Bilder_Anzeige.Controls.Add(LabelNoPics);
                 LabelNoPics.Show();
             }
-
+            CheckPics();
         }
 
         private void Image_Click(object sender, EventArgs e)
@@ -114,6 +115,7 @@ namespace HBBK_Scanner
                 Label_noDirectory.Location = new Point(path_Label.X - Label_noDirectory.Size.Width, Label_noDirectory.Location.Y);
                 Label_noDirectory.Show();
 
+                groupBoxSpeichergröße.Show();
 
                 Bilder_Anzeige.Show();
                 Button_Start.Hide();
@@ -344,15 +346,24 @@ namespace HBBK_Scanner
             Image_Preview.Hide();
         }
 
-        private void checkBox_Einstellungen_CheckedChanged(object sender, EventArgs e)
+        private void CheckPics()
         {
-            if (checkBox_Speichergröße.Checked)
+            int Count = 0;
+            foreach (Control c in Bilder_Anzeige.Controls)
             {
-                panelSettings.Show();
+                if (c is PictureBox)
+                {
+                    Count++;
+                }
+            }
+            if (Count>0)
+            {
+                LabelNoPics.Hide();
             }
             else
             {
-                panelSettings.Hide();
+                Bilder_Anzeige.Controls.Add(LabelNoPics);
+                LabelNoPics.Show();
             }
         }
     }
