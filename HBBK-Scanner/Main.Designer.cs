@@ -213,7 +213,7 @@
             this.panelDName.Controls.Add(this.Label_DName);
             this.panelDName.Location = new System.Drawing.Point(508, 13);
             this.panelDName.Name = "panelDName";
-            this.panelDName.Size = new System.Drawing.Size(392, 54);
+            this.panelDName.Size = new System.Drawing.Size(432, 54);
             this.panelDName.TabIndex = 17;
             // 
             // Label_DName
@@ -234,7 +234,7 @@
             this.panelPfad.Controls.Add(this.Label_BPfad);
             this.panelPfad.Location = new System.Drawing.Point(10, 680);
             this.panelPfad.Name = "panelPfad";
-            this.panelPfad.Size = new System.Drawing.Size(1206, 59);
+            this.panelPfad.Size = new System.Drawing.Size(1246, 59);
             this.panelPfad.TabIndex = 16;
             // 
             // Label_BPfad
@@ -406,7 +406,7 @@
             // timer_textbox
             // 
             this.timer_textbox.Enabled = true;
-            this.timer_textbox.Interval = 3;
+            this.timer_textbox.Interval = 500;
             this.timer_textbox.Tick += new System.EventHandler(this.timer_textbox_Tick);
             // 
             // label3

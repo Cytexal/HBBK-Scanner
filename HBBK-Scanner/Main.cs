@@ -17,6 +17,11 @@ namespace HBBK_Scanner
         List<string> imagepaths = new List<string>();
         Dictionary<string, string> nametopath = new Dictionary<string, string>();
         Point path_Label;
+        String Name;
+        String Path;
+        int Counter =-8;
+        bool autoscrollname = false;
+        bool autoscrollpath = false;
 
 
         //Image.FromFile(nametopath[listBox1.SelectedItem.ToString()]);
@@ -248,6 +253,7 @@ namespace HBBK_Scanner
             {
                 TextBoxID.BackColor = Color.IndianRed;
             }
+
         }
 
         private void TextBoxID_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
@@ -272,6 +278,7 @@ namespace HBBK_Scanner
                     Variablen.SavePath = folderBrowserDialogSaveDirectory.SelectedPath;
                     Label_Speicherort.Text = "Verzeichnis: " + Variablen.SavePath + @"\";
                     Label_Speicherort.Location = new Point(path_Label.X - Label_Speicherort.Size.Width, Label_Speicherort.Location.Y);
+
                     buttonChooseSaveDirectory.Location = new Point(Label_Speicherort.Location.X - buttonChooseSaveDirectory.Width - 10, buttonChooseSaveDirectory.Location.Y);
                     Label_noDirectory.Hide();
                     Label_Speicherort.Text = "Verzeichnis: " + Variablen.SavePath + @"\";
@@ -323,7 +330,19 @@ namespace HBBK_Scanner
             panelDName.Location = new Point(Image_Preview.Size.Width, panelDName.Location.Y);
             Label_BBreite.Location = new Point(Image_Preview.Size.Width, Label_BBreite.Location.Y);
             Label_BHöhe.Location = new Point(Image_Preview.Size.Width, Label_BHöhe.Location.Y);
-            Label_DName.Text = "Datei-Name: " + ImageUtils.getImageName(path);
+
+            if(ImageUtils.getImageName(path).Length > 16)
+            {
+                Label_DName.Text = "Datei-Name: " + ImageUtils.getImageName(Path);
+                autoscrollname = true;
+                Name = ImageUtils.getImageName(path).Substring(ImageUtils.getImageName(path).Length - (ImageUtils.getImageName(path).Length - 16));
+            }
+            else
+            {
+                Label_DName.Text = "Datei-Name: " + ImageUtils.getImageName(path);
+            }
+            Path = path;
+            
             Button_Löschen.Location = new Point(Image_Preview.Size.Width + 8, Button_Löschen.Location.Y);
             Label_BBreite.Text = "Bild-Breite: " + Image_Preview.Image.Width + " px";
             Label_BHöhe.Text = "Bild-Höhe: " + Image_Preview.Image.Height + " px";
